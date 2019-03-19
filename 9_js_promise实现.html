@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function a(b, c) {
+            console.log(b);
+            c()
+        }
+        a(1, () => {
+            console.log(2)
+        })
+        console.log(3)
+
+        const PENDING = 'PENDING', RESLOVED = 'RESOLVED', REJECTED = 'REJECTED'
+        function MyPromise(fn) {
+            let _this = this; // 保存this
+                _this.currentState = PENDING; // 状态
+                _this.value = undefined;
+                _this.resolvedCallbacks = [];
+                _this.rejectedCallbacks = [];
+            _this.resolve = function (value) {
+                if (value instanceof MyPromise) {
+                    return value.then(_this.resolve, _this.reject)
+                }
+                setTimeout(() => {
+                    if (_this.currentState = PENDING) {
+                        _this.currentState = RESLOVED;
+                        _this.value = value;
+                        _this.resolvedCallbacks.forEach(element => {
+                            element()
+                        });
+                    }
+                })
+            }
+            _this.reject = function (reason) {
+                setTimeout(() => {
+                    if (this.currentState = PENDING) {
+                        _this.currentState = REJECTED;
+                        _this.value = reason;
+                        this.rejectedCallbacks.forEach(cb => cb())
+                    }
+                })
+                try {
+                    fn(_this.resolve, _this.reject)
+                } catch (e) {
+                    _this.reject(e)
+                }
+            }
+        }
+
+        MyPromise.prototype.then = function (onResolved, onRejected) {
+            var self = this;
+            var Permise2;
+            onResolved = typeof onResolved === 'function' ? onResolved : v => v;
+            // onRejected = typeof onRejected === 'function' ? onRejected : r => throw r;
+            if (self.currentState = REJECTED) {
+
+            }
+        }
+        
+
+    
+    
+    
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <div id="app">
+        <input type="text" v-model='text'>
+        {{text}}
+    </div>
+    <script src="./mvvm/compile.js"></script>
+    <script src="./mvvm/mvvm.js"></script>
+    <script src="./mvvm/observer.js"></script>
+    <script src="./mvvm/watcher.js"></script>
+
+    <script>
+        new MVVM({
+            el: '#app',
+            data: {
+                text: 'hello'
+            }
+        })
+        // 数据代理原理
+        Object.defineProperty(me, key, {
+            enumerable: true,
+            configurable: false,
+            get: function () {
+                return me._data.key
+            },
+            set: function (newVal) {
+                this._datakey = newVal
+            }
+        })
+
+
+        // 双向数据绑定原理
+        Object.defineProperty()
+    
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 不论什么语言,内存管理分为三步
+        // 1.分配你所需要的内存
+        // 2.使用(读取或写入)申请的内存
+        // 3.内存不使用时回收
+
+
+        // 第二步很明显, 第一步和第三步底层语言会很清楚,高级语言会隐藏
+
+        // 最难的是回收内存
+
+        // 1.引用计数回收
+        // 当一个数据引用数量为0时即为无用数据,可以回收
+        // 但是这种方法无法解决循环引用
+
+        // 2.标记清除方法, 解决循环引用问题
+        // 当数据无法引用时,即可回收,现在浏览器标配方法
+
+    </script>
+</body>
+</html>

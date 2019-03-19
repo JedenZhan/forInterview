@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h3>数据的双向绑定</h3>
+        <div class="cell">
+            <div class="text" v-text="text"></div>
+            <input class="input" type="text" v-model="text">
+        </div>
+    </div>
+    <script>
+        // 简单的观察者模式实现
+        const Observer = (function () {
+            let _message = {}; // 数据私有化
+            return {
+                on: function (type, fn) {
+                    if (typeof _message[type] === 'undefined') {
+                        _message[type] = [fn];
+                    } else {
+                        _message[type].push(fn)
+                    }
+                }, // 注册消息
+
+                subscribe: function (type, args) {
+                    if (!_message[type]) return; //如果不存在,直接返回
+                    let events = {
+                        type: type,
+                        args: args || {}
+                    }
+                    for (let i = 0, len = _message[type].length; i < len; i++) {
+                        _message[type][i].call(this, events)
+                    }
+                }, // 分发消息
+                off: function (type, fn) {
+                    if (_message[type] instanceof Array) {
+                        let i = _message[type].length - 1;
+                        for (; i > 0; i--) {
+                            _message[type][i] === fn && _message[type].splice(i, 1)
+                        }
+                    }
+                } // 删除消息
+            }
+        })()
+
+        //订阅消息
+        // Observer.on('say', (data) => {
+        //     console.log(data.args.text)
+        // })
+        // Observer.on('do', () => {
+        //     console.log('success')
+        // })
+        // Observer.subscribe('say', { text: 'hello world' })
+        // Observer.subscribe('do')
+
+        // 实现我的 Vue
+        class myVue {
+            constructor(options) {
+                this._options = options;
+                this.$el = document.querySelector(options.el);
+                this.$data = options.data;
+                this._directive = {};
+                this._observe(this.$data);
+                this._compile(this.$el);
+            }
+            _observe(data) {
+                let val;
+                for (let key in data) {
+                    if (data.hasOwnProperty(key)) {
+                        this._directive[key] = [];
+                    }
+                    val = data[key];
+                    if (typeof val === 'object') {
+                        this._observe(val)
+                    }
+                    let _dir = this._directive[key];
+                    Object.defineProperty(this.$data, key, {
+                        enumerable: true,
+                        configurable: true,
+                        get: function () {
+                            return val;
+                        },
+                        set: function (newVal) {
+                            if (val !== newVal) {
+                                val = newVal
+                                _dir.forEach(element => {
+                                    element._update()
+                                });
+                            }
+                        }
+                    })
+                }
+            }
+            _compile(el) {
+                let nodes = el.children;
+                for (let i = 0, len = nodes.length; i < len; i++) {
+                    let node = nodes[i];
+                    if (node.children.length) { // 如果还有子元素递归处理
+                        this._compile(node)
+                    }
+                    if (node.hasAttribute('v-text')) {
+                        let attrValue = node.getAttribute('v-text');
+                        //将指令对应的执行方法放入指令集
+                        this._directive[attrValue].push(new Watcher('text', node, this, attrValue, 'innerHTML'))
+                    }
+                    if (node.hasAttribute('v-model') && (node.tagName === 'INPUT' || node.tagName === 'TEXTAREA')) {
+                        let _this = this;
+                        node.addEventListener('input', (function () {
+                            let attrValue = node.getAttribute('v-model');
+                            _this._directive[attrValue].push(new Watcher('input', node, _this,
+                                attrValue, 'value'))
+                            return function () {
+                                _this.$data[attrValue] = node.value
+                            }
+                        })())
+                    }
+                }
+            }
+        }
+        class Watcher {
+            constructor(name, el, vm, exp, attr) {
+                this.name = name;
+                this.el = el;
+                this.vm = vm;
+                this.exp = exp;
+                this.attr = attr;
+
+                this._update();
+            }
+            _update() {
+                this.el[this.attr] = this.vm.$data[this.exp]
+            }
+        }
+
+        const app = new myVue({
+            el: '#app',
+            data: {
+                text: 'hello'
+            }
+        })
+    </script>
+</body>
+
+</html>

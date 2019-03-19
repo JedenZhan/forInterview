@@ -11,6 +11,20 @@
         2. 能返回的数据有: string, number, object(object, array), boolean, function, symbol, undefined
         3. null 也是 object, 因为 最初 是32位系统, 内存前三位000的代表对象, 而 null 是 全0
         */
+
+
+        // 自己实现一个完整的typeof
+        function mytypeof(target) {
+            if (typeof target === 'undefined') {
+                throw new Error('mytypeof need one argument')
+                return
+            }
+            if (typeof target === 'object') {
+                return Object.prototype.toString.call(target).slice(8, -1)
+            } else {
+                return typeof target;
+            }
+        }
     </script>
 </head>
 <body>

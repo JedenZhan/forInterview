@@ -23,7 +23,7 @@
 
     <script>
         // 防抖
-        // 减少执行次数
+        // 过一段时间执行
         let shown = document.getElementById('shown'),
             a = 0
 
@@ -32,7 +32,6 @@
             console.log(a)
             console.log(e)
         } // 这样.鼠标滑动div时,频繁触发 add 函数
-        // 节流就是对频繁触发事件的优化,减少执行次数
 
         // 第一版
         function debounce1(func, time) {
@@ -107,9 +106,26 @@
             }
             return result;
         }
+        // -----------------------------------------------节流------------------------------------------------------
         shown.onmousemove = debounce4(add, 1000, true)
 
-        
+        // 节流
+        // 一段时间内频繁触发事件, 我就执行这几次
+        function throttle(func, wait) {
+            let context, args, previous = 0;
+
+            return function () {
+                let now = +new Date();
+                context = this;
+                args = arguments;
+                if (now - previous > wait) {
+                    func.apply(context, args);
+                    previous = now;
+                }
+            }
+
+        }
+
     </script>
 
 </body>

@@ -39,6 +39,7 @@
                         _message[type][i].call(this, events)
                     }
                 }, // 分发消息
+                
                 off: function (type, fn) {
                     if (_message[type] instanceof Array) {
                         let i = _message[type].length - 1;

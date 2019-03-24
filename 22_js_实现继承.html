@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // yui方法
+        function instance(target, origin) {
+            var o = function () {};
+            return (function () {
+                o.prototype = origin.prototype;
+                target.prototype = new o();
+                target.prototype.constructor = target; // 改变constructor
+                target.prototype.uber = origin.prototype; // 保存继承引用
+            })()
+        }
+    </script>
+</body>
+</html>

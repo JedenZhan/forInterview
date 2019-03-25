@@ -28,7 +28,7 @@
         return result
     }
     //-----------------------------------------------------------------------------------------
-    // 2.使用对象属性不能重复特性
+    // 2.使用对象属性不能重复特性, 最好的方法
     function unique2(arr) {
         if (!(arr instanceof Array)) {
             throw Error('we need a array');
@@ -50,9 +50,17 @@
         return Array.from(new Set(arr))
     } // 最简单
 
+    // 4.filter方法
+    function unique4(arr) {
+        let result = arr.filter(function (item, index, arr) {
+            console.log(item, index, arr)
+            return arr.indexOf(item) === index; // filter是过滤方法,每一个元素只返回第一个,其余过滤掉
+        })
+        return result
+    }
 
     a1 = [1,1,1,1,2,"1"]
-    a2 = unique2(a1)
+    a2 = unique4(a1)
     console.log(a2)
 
 

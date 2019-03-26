@@ -9,9 +9,22 @@
         /*
         1. prototype
         
-        
         */
-    
+        function Person() {
+
+        }
+        var Jeden = new Person()
+        console.log(Person.prototype === Jeden.__proto__) // true
+        
+
+
+        // 在JS里面,所有的对象都是函数创造出来的---不接受反驳
+        // 字面量方法都是语法糖
+        // 并不是所有对象最终都会指向Object.prototype
+        
+        // 比如
+        Object.create(null) // 空对象, 没有原型
+
     </script>
 </head>
 <body>

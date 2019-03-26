@@ -12,6 +12,32 @@
         3. call apply bind 优先级仅次于 new
         4. 箭头函数里面, this 取决于上一个不是箭头函数的 this
         */
+        //---------------------------------------------------------
+        var number = 5;
+        var obj = {
+            number: 3,
+            fn1: (function () {
+                var number = 1;
+                console.log(this.number) // 执行默认情况, this指向window
+                return function () {
+                    console.log(this.number) // 执行隐式绑定, this指向obj
+                }
+            })()
+        }
+        obj.fn1()
+        // ---------------------------------------------------------
+        // this绑定丢失情况
+        function fn() {
+            console.log(this.name)
+        }
+        var obj2 = {
+            name: 'Jeden',
+            method: fn
+        }
+        var name = 'Zhan'
+        fn2 = obj2.method;
+        fn2() // this绑定丢失,结果是Zhan
+        
     </script>
 </head>
 <body>

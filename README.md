@@ -9,20 +9,21 @@
 
 ## 代码技能
 
-
-
+包括JS基础, ES6, React, Vue
 
 ## 网络部分
 
-
+包括Http协议
+网络请求过程
 
 ## 缓存部分
 
-
+cookie,session, session storage, websql等
 
 ## 性能部分
 
-
+包括文件压缩, 图片格式, JS代码优化, CSS代码优化, 懒加载, 合理缓存, CDN, 等
 
 ## 安全部分
 
+主要 XSS 和 CSRF

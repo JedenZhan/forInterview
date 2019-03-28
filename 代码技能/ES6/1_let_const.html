@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. let 和 const 不能重复声明
+        let a = 1;
+        const a = 1; // 报错
+        
+        var b = 1;
+        let b = 1; // 报错
+
+        // 2. let 和 const 声明变量不是全局属性, 存在一个script标签里面
+        let c = 1;
+        const d = 1
+        console.log(c, window.c, window.d) // 1 undefined undefined
+
+        // 3. let 和 const 声明不会提升, 并且会有死锁问题
+
+        typeof e; // 相对安全的 typeof 也会报错
+        let e = 1
+    
+        // 4. let 和 const 的区别
+        // const 定义的是 常量, 不可变, 但 const 定义的对象 属性可改变
+        // let 则可变
+    
+        // 5. 局部作用域问题
+        {
+            let f = 1;
+        }
+        console.log(f) // 访问不到
+    </script>
+</body>
+</html>

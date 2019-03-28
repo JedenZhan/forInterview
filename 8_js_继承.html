@@ -12,15 +12,15 @@
 
         }
         function Child() {
-            this.name = 'child'
+            this.name = 'child';
         }
-        Father.prototype.fname = '123'
-        // 圣杯模式
+        Father.prototype.fname = '123';
+        // 圣杯模式-- 最理想的继承模式
         function Inherit(Target, Origin) {
-            function F() {}
-            F.prototype = Origin.prototype
-            Target.prototype = new F()
-            Target.prototype.constucter = Target
+            function F() {} // 创建一个中介
+            F.prototype = Origin.prototype // 中介的prototype改为Origin的prototype
+            Target.prototype = new F() // 目标类的prototype改为F的实例对象
+            Target.prototype.constucter = Target // 重新修改指向
             Target.prototype.uber = Origin.prototype
         }
         const YUIInherit = (function () {

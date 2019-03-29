@@ -8,16 +8,15 @@
 </head>
 <body>
     <script>
-        // yui方法
-        function instance(target, origin) {
-            var o = function () {};
-            return (function () {
-                o.prototype = origin.prototype;
-                target.prototype = new o();
-                target.prototype.constructor = target; // 改变constructor
-                target.prototype.uber = origin.prototype; // 保存继承引用
-            })()
-        }
+        // A instancOf B 判断A是否是B的实例
+        [] instanceof Array; // true
+        console.log({} instanceof Object); // true
+
+        // 注意:
+        '' instanceof String // false
+        1 instanceof Number // false
+        // 因为是字面量基础类型, 而不是对象
+
     </script>
 </body>
 </html>

@@ -1,74 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
     <script>
-        function a(b, c) {
-            console.log(b);
-            c()
-        }
-        a(1, () => {
-            console.log(2)
-        })
-        console.log(3)
+        // 最基础版本
+        const PENDING = 'pending',
+            RESOLVED = 'resloved',
+            REJECTED = 'rejected';
 
-        const PENDING = 'PENDING', RESLOVED = 'RESOLVED', REJECTED = 'REJECTED'
         function MyPromise(fn) {
-            let _this = this; // 保存this
-                _this.currentState = PENDING; // 状态
-                _this.value = undefined;
-                _this.resolvedCallbacks = [];
-                _this.rejectedCallbacks = [];
-            _this.resolve = function (value) {
-                if (value instanceof MyPromise) {
-                    return value.then(_this.resolve, _this.reject)
-                }
-                setTimeout(() => {
-                    if (_this.currentState = PENDING) {
-                        _this.currentState = RESLOVED;
-                        _this.value = value;
-                        _this.resolvedCallbacks.forEach(element => {
-                            element()
-                        });
-                    }
-                })
-            }
-            _this.reject = function (reason) {
-                setTimeout(() => {
-                    if (this.currentState = PENDING) {
-                        _this.currentState = REJECTED;
-                        _this.value = reason;
-                        this.rejectedCallbacks.forEach(cb => cb())
-                    }
-                })
-                try {
-                    fn(_this.resolve, _this.reject)
-                } catch (e) {
-                    _this.reject(e)
-                }
-            }
-        }
-        // 未完成,未看懂
-        MyPromise.prototype.then = function (onResolved, onRejected) {
-            var self = this;
-            var Permise2;
-            onResolved = typeof onResolved === 'function' ? onResolved : v => v;
-            // onRejected = typeof onRejected === 'function' ? onRejected : r => throw r;
-            if (self.currentState = REJECTED) {
+            const _this = this;
+            _this.state = PENDING; // 开始的状态是pending
+            _this.value = null; // value用于保存resolve或者reject传入的值
+            _this.reslovedCallbacks = []; 
+            _this.rejectedCallbacks = []; // 保存then的回调
+            // 以上是最简单版本 没有reslove, rejected, 没有fn函数处理
 
+            function resolve(value) {
+                if (_this.state === PENDING) {
+                    _this.state = RESOLVED;
+                    _this.value = value;
+                    _this.reslovedCallbacks.map(item => item(_this.value))
+                }
             }
+            '两个函数都要先判断是否为pending状态, 不是则不进行相应的改变, 修改状态, 赋值, 遍历执行队列函数'
+            function reject(value) {
+                if (_this.state === PENDING) {
+                    _this.state = REJECTED;
+                    _this.value = value;
+                    _this.rejectedCallbacks.map(item => item(_this.value))
+                }
+            }
+            // -----------------------------------以下执行 传入的fn函数-------------------------------
+            try {
+                fn(resolve, reject) // 传入的函数是在new promise过程执行的
+            } catch(e) {
+                reject(e) // 如果里面报错, 则直接返回reject
+            }
+
         }
         
+        // ------------------------------------以下为最复杂的 then 函数------------------------------
 
-    
-    
-    
-    
+        MyPromise.prototype.then = function (onFullfilled, onRejected) {
+            const _this = this;
+            onFullfilled = typeof onFullfilled === 'function' ? onFullfilled: v => v;
+            onRejected = typeof onRejected === 'function' ? onRejected: r => {throw r};
+            if (_this.state === PENDING) {
+                _this.reslovedCallbacks.push(onFullfilled);
+                _this.rejectedCallbacks.push(onRejected);
+            }
+            if (_this.state === RESOLVED) {
+                onFullfilled(_this.value)
+            }
+            if (_this.state === REJECTED) {
+                onRejected(_this.value)
+            }
+        }
+        new MyPromise((resolve, reject) => {
+            resolve(1);
+            reject()
+        }).then(value => {
+            console.log(value)
+        })
+
     </script>
 </body>
+
 </html>

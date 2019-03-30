@@ -30,6 +30,11 @@
         }
         obj.sayName() // Jeden
 
+        const func3 = (a) => {
+            console.log(arguments, a) // 报错, 箭头函数没有arguments绑定
+        }
+        func3(1)
+
     </script>
 </body>
 </html>

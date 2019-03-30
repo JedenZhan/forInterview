@@ -25,16 +25,39 @@
                     enumerable: true,
                     configurable: true,
                     set(newVal) {
-                        this.data.x = newVal
+                        this.data[x] = newVal
                     },
                     get() {
-                        return this.data.x
+                        return this.data[x]
                     }
                 })
             }
         }
-        myProxy(obj1)
+        myProxy(obj1) // 这样就实现了简单的数据代理
+
+        '但是 这种方法不能监听数组的变化'
+        // 数组的怪异方法:
+        // 包括: 四个栈方法(push, shift, unshift, pop), splice, sort, reverse, 造成的数组变化不会经过set方法
+
+        // vue的解决方案是:
+        // 重写这几个方法
+        // 具体实现是:
+        const aryMethods = ['push', 'pop', 'shift', 'unshift', 'splice', 'sort', 'reverse'];
+        const arrayAugmentations = {};
+
+        aryMethods.forEach((method) => {
+            let originMethod = Array.prototype[method] // 先保存原生方法
+            arrayAugmentations[method] = function () {
+                console.log('我被改变啦') // 这里写vue的操作
+
+                return originMethod.apply(this, arguments)
+            }
+        })
+
+        '在 vue3 里面, 数据代理改为ES6新特性 proxy 实现'
+
         
+
     </script>
 </body>
 

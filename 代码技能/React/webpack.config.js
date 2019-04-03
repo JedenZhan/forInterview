@@ -18,6 +18,19 @@ const config = {
                 use: 'babel-loader'
             }
         ]
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './index.html',
+            title: 'hello Jeden',
+            filename: 'index.html'
+        }),
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NamedModulesPlugin()
+    ],
+    devServer: {
+        port: 8080,
+        hot: true
     }
 }
 

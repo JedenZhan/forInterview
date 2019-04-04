@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [], obj = {
+            
+        };
+
+        Object.defineProperty(obj, 'key', {
+            enumerable: true,
+            configurable: true,
+            set: function (newValue) {
+                console.log('我被改变啦' + newValue)
+                obj.value = newValue;
+            },
+            get: function () {
+                return this.value
+            }
+        })
+
+        console.log(obj)
+        obj.key = arr; // 触发set
+        obj.key.push(1); // 数组被改变了,但是没有触发set
+        console.log(obj)
+
+
+        
+    </script>
+</body>
+</html>

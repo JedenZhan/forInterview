@@ -9,15 +9,35 @@ const config = {
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
+        filename: '[name].[hash].js'
     },
     module: {
         rules: [
             {
-                test: /\.js|.jsx$/,
+                test: /\.js$/,
                 use: 'babel-loader'
+            },
+            {
+                test: /\.styl$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'stylus-loader',
+                ]
+            },
+            {
+                test: /\.(jpg|jpeg|webp|png)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[path][name].[ext]',
+                        },
+                    }
+                ],
+                
             }
-        ]
+        ],
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -26,8 +46,9 @@ const config = {
             filename: 'index.html'
         }),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NamedModulesPlugin()
+        new webpack.NamedModulesPlugin(),
     ],
+    
     devServer: {
         port: 8080,
         hot: true

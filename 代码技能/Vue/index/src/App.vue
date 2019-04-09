@@ -1,5 +1,5 @@
 <template>
-    <div>hello world {{ data }}</div>
+    <div class="App">hello world {{ data }}</div>
 </template>
 <script>
 export default {
@@ -9,12 +9,12 @@ export default {
             data: 'nice'
         }
     },
-    
+
 }
 </script>
-<style>
-div {
-    color: red;
+<style lang='stylus' scoped>
+.App {
+    color red
 }
 </style>
 

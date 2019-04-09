@@ -22,9 +22,14 @@ const config = {
                 use: 'babel-loader'
             },
             {
+                test: /\.stylus$/,
+                use: ['style-loader', 'css-loader', 'stylus-loader']
+            },
+            {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader']
+                use: ['css-loader', 'style-loader']
             }
+            
         ]
     },
     plugins: [

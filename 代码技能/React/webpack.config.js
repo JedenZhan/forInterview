@@ -35,10 +35,10 @@ const config = {
                         },
                     }
                 ],
-                
             }
         ],
     },
+    // soloves: [ '', '.js', '.css', '.styl' ],
     plugins: [
         new HtmlWebpackPlugin({
             template: './index.html',

@@ -29,7 +29,6 @@ const config = {
                 test: /\.css$/,
                 use: ['css-loader', 'style-loader']
             }
-            
         ]
     },
     plugins: [

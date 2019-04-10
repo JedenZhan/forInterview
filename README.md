@@ -5,7 +5,8 @@
 
 ## 代码技能
 
-包括JS基础, ES6, React, Vue
+包括JS基础, ES6, 
+React, Vue: `手动基于webpack搭建的项目`
 
 以及部分实现原理, 设计模式
 

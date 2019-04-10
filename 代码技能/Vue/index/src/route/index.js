@@ -5,13 +5,22 @@ import Foo from '../components/Foo.vue'
 import Bar from '../components/Bar.vue'
 
 
-const routes = [{
+const routes = [
+    {
         path: '/foo',
         component: Foo
     },
     {
         path: '/bar',
         component: Bar
+    },
+    {
+        path: '/',
+        redirect: '/foo' // 路由重定向
+    },
+    // 动态路由匹配
+    {
+        path: '/mine/:id'
     }
 ]
 

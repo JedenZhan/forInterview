@@ -21,7 +21,7 @@ export default {
 </script>
 <style lang='stylus' scoped>
 .App {
-    color red
+    color #00f
 }
 </style>
 

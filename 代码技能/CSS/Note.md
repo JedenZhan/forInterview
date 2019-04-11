@@ -54,7 +54,7 @@
 
 **解决:** 设置BFC元素
 
-触发BFC的条件:
+**触发BFC的条件:**
 
 - float的值不是none
 - position的值不是static或者relative
@@ -87,7 +87,7 @@
 </style>
 ```
 
-**不解决**
+**不解决, 没什么影响**
 
 
 

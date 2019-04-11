@@ -1,15 +1,14 @@
 const path = require('path'),
     webpack = require('webpack'),
-    HtmlWebpackPlugin = require('html-webpack-plugin');
-
-
+    HtmlWebpackPlugin = require('html-webpack-plugin'),
+    ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const config = {
     mode: 'development',
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[name].[hash].js'
+        filename: 'bundle.js'
     },
     module: {
         rules: [
@@ -22,16 +21,16 @@ const config = {
                 use: [
                     'style-loader',
                     'css-loader',
-                    'stylus-loader',
+                    'stylus-loader'
                 ]
             },
             {
-                test: /\.(jpg|jpeg|webp|png)$/,
+                test: /\.(jpg|jpeg|webp|png|gif)$/,
                 use: [
                     {
-                        loader: 'file-loader',
+                        loader: 'url-loader',
                         options: {
-                            name: '[path][name].[ext]',
+                            limit: 10000,
                         },
                     }
                 ],

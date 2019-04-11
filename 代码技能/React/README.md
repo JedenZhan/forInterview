@@ -95,10 +95,17 @@ React生命周期分为三个步骤: **创建挂载, 运行更新, 销毁**
 
 
 
+## Redux
 
+具体使用见`/src/redux/store.js`
 
+### 基本概念: 
 
+在redux中, 所有的数据保存在一个叫`store`的容器中, **并且一个程序只能有一个store, 不能有多个**, store本质上是一个状态树, 保存了所有数据的状态, 任何组件可以直接从store获取数据. 如果想要改变状态, 需分发一个  `action`, 分发的意思是把可执行信息发送给store, 当一个store接收到action, 它将把这个action代理给相关的`reducer`, reducer是一个纯函数, 它可以查WXML：WXML微信自己基于XML语法开发的，因此开发时，只能使用微信提供的现有标签，HTML的标签是无法使用的。看之前的状态, 并执行action, 然后返回新的状态
 
+**Redux只允许数据单向流动**
+
+![img](/home/jedenzhan/Documents/Interview/代码技能/React/assets/reduxData.png)
 
 
 

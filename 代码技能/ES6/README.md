@@ -6,10 +6,10 @@
 4. Promise解决异步调用
 5. 解构赋值
 6. Symbol
-7. Set和Map
+7. Set和Map新数据类型
 8. 模块化
 9. async 异步
-10. Proxy代理
+10. Proxy 代理
 11. Generator
 
 ## Set

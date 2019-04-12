@@ -99,6 +99,8 @@ http和https主要区别如下:
 - http和https使用完全不同的连接方式, 连接端口也不一样, http是80, https是443
 - http连接很简单无状态, https是使用ssl加密的连接, 比http安全
 
+
+
 ## https工作原理
 
 客户端在使用 https 向服务端发送请求时,分为以下几个步骤

@@ -97,7 +97,7 @@ React生命周期分为三个步骤: **创建挂载, 运行更新, 销毁**
 
 ## Redux
 
-具体使用见`/src/redux/store.js`
+具体使用见`/src/redux/store.js`jedenzhan
 
 ### 基本概念: 
 
@@ -106,6 +106,3 @@ React生命周期分为三个步骤: **创建挂载, 运行更新, 销毁**
 **Redux只允许数据单向流动**
 
 ![img](/home/jedenzhan/Documents/Interview/代码技能/React/assets/reduxData.png)
-
-
-

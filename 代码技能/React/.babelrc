@@ -1,4 +1,14 @@
 {
     "presets": ["@babel/preset-env"],
-    "plugins": ["@babel/plugin-transform-react-jsx"]
+    "plugins": [
+        "@babel/plugin-transform-react-jsx",
+        [
+            "import",
+            {
+              "libraryName": "antd",
+              "libraryDirectory": "es",
+              "style": "css" // `style: true` 会加载 less 文件
+            }
+        ]
+    ]
 }

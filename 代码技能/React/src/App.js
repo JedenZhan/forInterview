@@ -1,5 +1,7 @@
 import React from 'react'
+import { Button } from 'antd'
 import './style/index.styl'
+
 
 class App extends React.Component {
     constructor () {
@@ -13,7 +15,9 @@ class App extends React.Component {
             <div>
                 <button>hello world</button>
                 {this.state.num}
-                <img src='../assets/1.png' />
+                {/* <img src='../assets/1.png' /> */}
+                <Button>antd nice</Button>
+
             </div>
         )
     }

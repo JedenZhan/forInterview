@@ -25,6 +25,37 @@ const config = {
                 ]
             },
             {
+                test: /\.css$/,
+                // exclude: /node_modules/,
+                use: ['style-loader', 'css-loader']
+                // ExtractTextPlugin.extract({
+                //     fallback: 'style-loader',
+                //     use: [{
+                //         loader: 'css-loader',
+                //         options: {
+                //             importLoaders: 1,
+                //             modules: true,
+                //             localIdentName: '[name]__[local]__[hash:base64:5]'
+                //         }
+                //     },
+                //     {
+                //         loader: 'postcss-loader',
+                //         options: {
+                //             ident: 'postcss',
+                //             plugins: () => [
+                //                 autoprefixer({
+                //                     browsers: [
+                //                        "> 1%",
+                //                        "last 2 versions"
+                //                     ]
+                //                 })
+                //             ]
+                //         }
+                //      }
+                //     ]
+                // })
+            },
+            {
                 test: /\.(jpg|jpeg|webp|png|gif)$/,
                 use: [
                     {
@@ -34,6 +65,11 @@ const config = {
                         },
                     }
                 ],
+            },
+
+            {
+                test: /.(eot|svg|ttf|woff|woff2)$/,
+                use: 'file-loader'
             }
         ],
     },
@@ -46,6 +82,7 @@ const config = {
         }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),
+        // new ExtractTextPlugin('bundle.css')
     ],
     
     devServer: {

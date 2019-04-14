@@ -46,3 +46,10 @@ const config = {
 }
 
 module.exports = config;
+// loader 和 plugin的区别:
+    // loader在于帮助webpack打包其他非commonjs规范的文件, 比如img, css, es6, .vue, .jsx
+    // plugin在于扩展webpack的功能
+
+// webpack 打包慢怎么办
+// 1. 按需加载需要的包
+// 2. 减少webpack-loader搜寻路径, exclude

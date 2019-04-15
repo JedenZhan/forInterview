@@ -1,5 +1,6 @@
 <template>
     <div class="App">
+        本例子仅讲解, 请阅读源码与目录结构
         <span>hello world {{ data1 }}</span>
         <span>{{ vuexData1 }}</span>
         <p>

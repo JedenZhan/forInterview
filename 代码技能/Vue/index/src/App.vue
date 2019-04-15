@@ -5,10 +5,11 @@
         <p>
             <router-link to="/foo" @click="tofoo">Go to Foo</router-link>
             <router-link to="/bar">Go to Bar</router-link>
-            <button @click="tofoo()">toFoo</button>
-            <button @click="toMine()">toMine</button>
-            <button @click="plusCount()">count+1</button>
-            <button @click="increaseCount()">count-1</button>
+            <el-button @click="tofoo">toFoo</el-button>
+            <el-button @click="toMine">toMine</el-button>
+            <el-button @click="plusCount">count+1</el-button> <!-- 事件带括号不带均可, 带括号可以传参 -->
+            <el-button @click="increaseCount">count-1</el-button>
+            <el-button @click="keep">keepCount</el-button>
         </p>
         <router-view></router-view>
     </div>
@@ -30,10 +31,19 @@ export default {
         toMine() {
             this.$router.push('/mine/:123456')
         },
-        plusCount () {
-            
-        }
 
+        // 以下为 vuex
+        plusCount () {
+            this.$store.commit('increment') // 提交所操作的方法, 具体方法定义在mutations里面
+            console.log(this.$store.state.count)
+        },
+        increaseCount () {
+            this.$store.commit('incerise')
+            console.log(this.$store.state.count)
+        },
+        keep () {
+            this.$store.dispatch('keep')
+        }
     },
     computed: {
         vuexData1 () {

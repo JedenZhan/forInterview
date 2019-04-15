@@ -9,11 +9,11 @@ const config = {
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
+        filename: '[name].[hash].js',
+        chunkFilename: '[id].[hash].js'
     },
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.vue$/,
                 use: 'vue-loader'
             },
@@ -27,8 +27,12 @@ const config = {
             },
             {
                 test: /\.css$/,
-                use: ['css-loader', 'style-loader']
-            }
+                use: ['style-loader', 'css-loader']
+            },
+            {
+                test: /.(eot|svg|ttf|woff|woff2)$/,
+                use: 'file-loader'
+            } // use会loaders一样, 可以传入数组, loader只需要一个
         ]
     },
     plugins: [
@@ -47,9 +51,11 @@ const config = {
 
 module.exports = config;
 // loader 和 plugin的区别:
-    // loader在于帮助webpack打包其他非commonjs规范的文件, 比如img, css, es6, .vue, .jsx
-    // plugin在于扩展webpack的功能
+// loader在于帮助webpack打包其他非commonjs规范的文件, 比如img, css, es6, .vue, .jsx
+// plugin在于扩展webpack的功能
 
 // webpack 打包慢怎么办
 // 1. 按需加载需要的包
 // 2. 减少webpack-loader搜寻路径, exclude
+
+'当前配置问题就是打包后没有分文件, 就一个bundle.js文件. 太大了'

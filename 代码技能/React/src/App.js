@@ -4,8 +4,8 @@ import './style/index.styl'
 
 
 class App extends React.Component {
-    constructor () {
-        super();
+    constructor (prop) {
+        super(prop);
         this.state = {
             num: 1
         }
@@ -13,11 +13,8 @@ class App extends React.Component {
     render () {
         return (
             <div>
-                <button>hello world</button>
-                {this.state.num}
-                {/* <img src='../assets/1.png' /> */}
+                
                 <Button>antd nice</Button>
-
             </div>
         )
     }

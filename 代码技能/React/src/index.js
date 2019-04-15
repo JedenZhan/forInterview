@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 
-import App from './App.js'
+import Routes from './route/index.js'
 
-ReactDOM.render(<App />, document.getElementById('App'))
+// 要用Router把路由包裹起来
+ReactDOM.render(<Router><Routes /></Router>, document.getElementById('App'))

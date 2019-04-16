@@ -87,7 +87,8 @@ const config = {
     
     devServer: {
         port: 8080,
-        hot: true
+        hot: true,
+        open: true
     }
 }
 

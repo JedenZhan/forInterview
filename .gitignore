@@ -2,3 +2,4 @@
 代码技能/Vue/index/node_modules
 .vscode
 *.log
+.idea

@@ -4,6 +4,10 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 import './style/index.styl'
 
+// 两种声明组件的方式, class 和 function 
+// 区别就是 function 只有 props, 没有自己的状态(state), 没有生命周期, 但是效率高
+// class 全都有
+
 
 class App extends React.Component {
     constructor (prop) {
@@ -25,6 +29,8 @@ class App extends React.Component {
                     </li>
                 </ul>
                 <Button>antd nice</Button>
+                <Button> count + 1 </Button>
+                <Button> count - 1 </Button>
             </div>
         )
     }

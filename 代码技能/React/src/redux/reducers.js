@@ -2,14 +2,8 @@
 import { combineReducers } from 'redux' // 合并reducers
 
 
-function xxx(state=0, action) {
-    return state
-}
 
-function yyy(state=0, action) {
-    return state
-}
-
+// reducer可以接收state, 但是决不能修改state
 function counter(state=0, action) {
     switch (action.type) {
         case 'INCREMENT':
@@ -19,12 +13,9 @@ function counter(state=0, action) {
         
         default:
             return state + 1
-
     }
 }
 
 export default combineReducers({
-    xxx,
-    yyy,
     counter
 })

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from 'antd'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-
+import { Link } from 'react-router-dom'
+import store from './redux/store.js'
 import './style/index.styl'
 
 // 两种声明组件的方式, class 和 function 
@@ -9,12 +9,16 @@ import './style/index.styl'
 // class 全都有
 
 
+// 可以把UI和逻辑容器拆成两个文件
+
 class App extends React.Component {
     constructor (prop) {
         super(prop);
         this.state = {
-            num: 1
+            num: 1,
         }
+        this.plusCount = this.plusCount.bind(this)
+        
     }
     render () {
         return (
@@ -28,13 +32,19 @@ class App extends React.Component {
                         <Link to='/bar'>ToBar</Link>
                     </li>
                 </ul>
+                <span>count值:{  }</span>
                 <Button>antd nice</Button>
-                <Button> count + 1 </Button>
+                <Button onClick={this.plusCount}> count + 1 </Button>
                 <Button> count - 1 </Button>
+
             </div>
         )
     }
-
+    // conut + 1
+    plusCount () {
+        alert(1)
+        
+    }
 
     // 生命周期
     componentWillMount() {

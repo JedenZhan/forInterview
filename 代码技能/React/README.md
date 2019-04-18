@@ -119,11 +119,25 @@ React生命周期分为三个步骤: **创建挂载, 运行更新, 销毁**
 
 ## React 部分原理
 
+### setState() 做了什么
 
+1. 首先, setState是一个异步操作, setState的调用并不会立即引起state的改变
+2. 如果在一个函数里面多次调用state, 结果并不是你预期那样, setState可能会导致DOM重绘, 如果每一次调用都直接执行的话, 会造成性能损失, 多次调用setState会合并
+3. 
 
 ## React-router
 
+1. 和vue-router不一样, vue-router是配置路由, react-router更像管理组件, 把需要路由的组件导入到一个文件, 内部有路由的显示逻辑, 所以不需要类似router-view标签
 
+## Redux
+
+
+
+### redux-thunk
+
+
+
+### react-redux
 
 
 

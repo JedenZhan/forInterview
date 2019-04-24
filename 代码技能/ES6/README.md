@@ -1,3 +1,5 @@
+具体请精读阮一峰老师的ES6入门
+
 ## ES6 新特性
 
 1. 变量声明let, const
@@ -64,6 +66,26 @@ let ObjSet = new WeakSet([{}])
 传统对象只能用字符串当做键名, Map数据类型可以使用对象当键名
 
 **Object 结构提供了“字符串—值”的对应，Map 结构提供了“值—值”的对应，是一种更完善的 Hash 结构实现。如果你需要“键值对”的数据结构，Map 比 Object 更合适**
+
+
+
+数据抽象
+
+过程抽象
+
+
+
+
+
+##　装饰器
+
+```js
+function reverse(fn) {
+    return (...args) => {
+        return fn.apply(this, args.reverse())
+    }
+}
+```
 
 
 

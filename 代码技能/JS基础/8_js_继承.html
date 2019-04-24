@@ -23,6 +23,9 @@
             Target.prototype.constucter = Target // 重新修改指向
             Target.prototype.uber = Origin.prototype
         }
+
+
+        
         const YUIInherit = (function () {
             function F() {}
             return function (Target, Origin) {

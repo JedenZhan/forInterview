@@ -8,7 +8,7 @@ import Mine from '../components/Mine.vue'
 const routes = [
     {
         path: '/foo',
-        component: Foo
+        component: (Foo)
     },
     {
         path: '/bar',

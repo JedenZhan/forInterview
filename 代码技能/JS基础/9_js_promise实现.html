@@ -44,7 +44,6 @@
             } catch(e) {
                 reject(e) // 如果里面报错, 则直接返回reject
             }
-
         }
         // ------------------------------------以下为最复杂的 then 函数------------------------------
 
@@ -52,15 +51,15 @@
             const _this = this;
             onFullfilled = typeof onFullfilled === 'function' ? onFullfilled: v => v;
             onRejected = typeof onRejected === 'function' ? onRejected: r => {throw r};
-            if (_this.state === PENDING) {
+            if (_this.state === PENDING) { // 如果状态是pending则向执行队列中添加函数
                 _this.reslovedCallbacks.push(onFullfilled);
                 _this.rejectedCallbacks.push(onRejected);
             }
             if (_this.state === RESOLVED) {
-                onFullfilled(_this.value)
+                onFullfilled(_this.value) // 执行成功函数
             }
             if (_this.state === REJECTED) {
-                onRejected(_this.value)
+                onRejected(_this.value) // 执行失败面试
             }
         }
         new MyPromise((resolve, reject) => {
@@ -69,7 +68,11 @@
         }).then(value => {
             console.log(value)
         })
-
+        // 写出自己的promise
+        // 1. 存储三个常量: PENDING, RESLOVED, REJECTED
+        // 2. 初始化state, value, 成功回调函数组, 失败函数回调组
+        // 3. 定义reslove, rejected函数
+        // 4. then函数的编写
     </script>
 </body>
 

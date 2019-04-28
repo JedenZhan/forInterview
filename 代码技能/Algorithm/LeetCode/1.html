@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function print(e) {
+            console.log(e)
+        }
+        '回文子串'
+        var minCut = function (s) {
+            let newStr = s.split(''),
+                judge = [],
+                dp = [];
+            console.log(newStr)
+            for (let len = newStr.length, i = len - 1; i >= 0; i--) {
+                dp[i] = 999999;
+                for (let j = i; j < len; j++) {
+                    if (newStr[i] == newStr[j] && (j - i <= 1 || judge[i + 1][j - 1])) {
+                        judge[i] = [];
+                        judge[i][j] = true;
+                        if (j + 1 < len) {
+                            dp[i] = Math.min(dp[i], 1 + dp[j + 1])
+                        } else {
+                            dp[i] = 0
+                        }
+                    }
+                }
+            }
+            console.log(dp, judge)
+            return dp[0];
+        }; // 错误版本, 等待改进
+        // console.log(minCut('fffeee'))
+
+        '875 爱吃香蕉的娜娜'
+        var minEatingSpeed = function (piles, H) {
+            let maxNum = Math.max(...piles),
+                pilesLen = piles.length,
+                sortedPiles = piles.sort((x, y) => x - y),
+                [low, high] = [1, sortedPiles[pilesLen - 1]],
+                mid;
+
+            function isOk(K) {
+                let trueHour = 0;
+                for (let i in sortedPiles) {
+                    trueHour += Math.floor((sortedPiles[i]) / K) + 1;
+                }
+                // console.log(trueHour);
+                return trueHour <= H;
+            }
+            if (pilesLen === H) {
+                return maxNum
+            }
+            if (pilesLen === H - 1) {
+                debugger
+                return sortedPiles[pilesLen - 2]
+            }
+            while (low < high) {
+                mid = Math.floor((low + high) / 2);
+                if (!isOk(mid)) {
+                    low = mid + 1
+                } else {
+                    high = mid
+                }
+            }
+            return low;
+            pilesLen
+            // return sortedPiles
+        };
+        var minEatingSpeed2 = function (piles, H) {
+            const max = piles.reduce((accumulator, current) => accumulator + current);
+            debugger
+            let l = 0,
+                r = max + 1;
+            while (l < r) {
+                const m = Math.floor((l + r - 1) / 2);
+                let h = 0;
+                for (p of piles) {
+                    h += Math.floor((p + m - 1) / m);
+                }
+                if (h <= H) {
+                    r = m;
+                } else {
+                    l = m + 1;
+                }
+            }
+            return l;
+        };
+
+        console.log(minEatingSpeed2([30, 11, 23, 4, 20], 6))
+    </script>
+</body>
+
+</html>

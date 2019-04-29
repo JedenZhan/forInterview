@@ -73,6 +73,7 @@
             pilesLen
             // return sortedPiles
         };
+        '875优解'
         var minEatingSpeed2 = function (piles, H) {
             const max = piles.reduce((accumulator, current) => accumulator + current);
             debugger
@@ -92,8 +93,73 @@
             }
             return l;
         };
+        // console.log(minEatingSpeed2([30, 11, 23, 4, 20], 6))
+        '945使数组唯一的最小增量'
+        var minIncrementForUnique = function (A) {
+            let sortedA = A.sort((x, y) => x - y),
+                times = 0,
+                obj = {},
+                myArr = [];
+            for (let i = 0, len = sortedA.length; i < len; i++) {
+                obj[sortedA[i]] ? myArr.push(sortedA[i]) : obj[sortedA[i]] = 1
+            }
+            myArr.forEach(item => {
+                while (obj[item]) {
+                    ++item;
+                    ++times;
+                }
+                obj[item] = 1
+            })
+            return times;
+        };
+        // console.log(minIncrementForUnique([1, 2, 2]))
+        '223. 矩形面积'
+        var computeArea = function (A, B, C, D, E, F, G, H) {
+            let all = (C - A) * (D - B) + (G - E) * (H - F),
+                common;
+            console.log(all, common)
+            if (B >= H || D <= F || C <= E || A >= G) {
+                return all;
+            } else {
+                h = Math.min(D, H) - Math.max(B, F);
+                w = Math.min(C, G) - Math.max(A, E);
+                common = h * w;
+            }
 
-        console.log(minEatingSpeed2([30, 11, 23, 4, 20], 6))
+            return all - common
+        };
+
+        // console.log(computeArea(-2, -2, 2, 2, 3, 3, 4, 4))
+
+        '870. 优势洗牌'
+        var advantageCount = function (A, B) {
+
+            // 先将A排序 
+            let arr = A.sort((a, b) => { return a >= b ? 1 : -1 }),
+                res = [];
+            for (let i = 0; i < B.length; i++) {
+                // 如果最大的值依然小于等于B当前值  则用当前最小值去对应
+                if (arr[arr.length - 1] <= B[i]) {
+                    res.push(arr.shift())
+                } else {
+                    let j = 0;
+                    // 找到合适的值就插入并结束遍历
+                    while (j < arr.length) {
+                        if (arr[j] > B[i]) {
+                            res.push(arr[j]);
+                            break;
+                        }
+                        j++;
+                    }
+
+                    // 将插入的值清除
+                    arr.splice(j, 1);
+                }
+            }
+            return res;
+        };
+        console.log(advantageCount([2, 7, 11, 15], [1, 10, 4, 11]))
+        console.log(advantageCount([12, 24, 8, 32], [13, 25, 32, 11]))
     </script>
 </body>
 

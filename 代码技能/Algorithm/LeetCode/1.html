@@ -135,7 +135,9 @@
         var advantageCount = function (A, B) {
 
             // 先将A排序 
-            let arr = A.sort((a, b) => { return a >= b ? 1 : -1 }),
+            let arr = A.sort((a, b) => {
+                    return a >= b ? 1 : -1
+                }),
                 res = [];
             for (let i = 0; i < B.length; i++) {
                 // 如果最大的值依然小于等于B当前值  则用当前最小值去对应
@@ -158,8 +160,20 @@
             }
             return res;
         };
-        console.log(advantageCount([2, 7, 11, 15], [1, 10, 4, 11]))
-        console.log(advantageCount([12, 24, 8, 32], [13, 25, 32, 11]))
+        // console.log(advantageCount([2, 7, 11, 15], [1, 10, 4, 11]))
+        // console.log(advantageCount([12, 24, 8, 32], [13, 25, 32, 11]))
+        '107. 二叉树的层次遍历 II'
+        var levelOrderBottom = function (root) {
+            
+            let result = [], item,
+                root2 = Array.from(root);
+            for (let i = 0, j = 1; root2.length != 0; j *= 2) {
+                item = root2.splice(i, j);
+                result.unshift(item)
+            }
+            return result
+        };
+        print(levelOrderBottom([3,9,20,null,null,15,7]))
     </script>
 </body>
 

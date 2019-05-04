@@ -31,11 +31,13 @@ cookie,session, session storage, websql等
 主要 XSS 和 CSRF
 
 
-
 ## 算法部分
 
 updating
 
+## 设计模式
+
+updating
 
 
 **如果有什么补充请去issue**

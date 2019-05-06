@@ -1,8 +1,10 @@
 import React from 'react'
 import { Button } from 'antd'
+
 import { Link } from 'react-router-dom'
-import store from './redux/store.js'
 import './style/index.styl'
+
+import TryHooks from './components/TryHooks.js'
 
 // 两种声明组件的方式, class 和 function 
 // 区别就是 function 只有 props, 没有自己的状态(state), 没有生命周期, 但是效率高
@@ -36,7 +38,7 @@ class App extends React.Component {
                 <Button>antd nice</Button>
                 <Button onClick={this.plusCount}> count + 1 </Button>
                 <Button> count - 1 </Button>
-
+                <TryHooks></TryHooks>
             </div>
         )
     }

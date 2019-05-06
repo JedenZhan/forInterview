@@ -14,7 +14,6 @@ class Routes extends React.Component {
                 <Route path="/foo" component={Foo} />
                 <Route path="/bar" component={Bar} />
             </HashRouter>
-            
         )
     }
 }

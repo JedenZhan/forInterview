@@ -32,27 +32,10 @@
         function print(v) {
             console.log(v)
         }
-
-        function Parent() {
-            this.name = ['kiven']
-        }
-
-        Parent.prototype.getname = function () {
-            return this.name
-        }
-
-        function Child() {
-
-        }
-        Child.prototype = new Parent()
-
-        let child1 = new Child();
-        let child2 = new Child();
-
-        child1.name.push('Jden')
-
-        print(child1)
-        print(child2)
+        var arr1 = []
+        
+        
+        
     </script>
 
 </body>

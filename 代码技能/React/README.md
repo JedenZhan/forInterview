@@ -107,6 +107,10 @@ React生命周期分为三个步骤: **创建挂载, 运行更新, 销毁**
 
 ![img](/home/jedenzhan/Documents/Interview/代码技能/React/assets/reduxData.png)
 
+
+
+
+
 ## 学习一个框架
 
 - 它是什么？能做什么？

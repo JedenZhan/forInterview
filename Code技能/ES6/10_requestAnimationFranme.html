@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let id;
+    function animate () {
+        id = requestAnimationFrame(animate);
+    }
+    cancelAnimationFrame(id);
+    // 浏览器进行优化,动画更流畅
+    // 按浏览器的时间间隔绘制,动画不会掉帧
+    // 窗口没激活时或标签页不可见时,动画将暂停,省计算资源,减少CPU和内存的压力
+    // 更省电,尤其是对移动终端
+</script>
+</body>
+</html>

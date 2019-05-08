@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // call, apply, bind 制定用于绑定函数的this
+
+        // 比如
+        var name = 'JedenZhan'
+        function sayName() {
+            console.log(this.name)
+        }
+
+        var obj = {
+            name: 'Jeden'
+        }
+        sayName.call(obj); // Jeden
+        sayName(); // JedenZhan
+        // call 和 apply 唯一区别就是传参方式不一样
+
+        // bind是永久绑定
+
+        sayMyName = sayName.bind(obj)
+        sayMyName() // 结果全是jeden
+        sayMyName()
+        sayMyName()
+    
+        console.log('---------------------------------call和apply模拟实现-----------------------------------------------')
+        // ------------------------模拟实现-------------------
+        // bind
+        // 第一版// 传参问题
+        Function.prototype.myCall = function (context) {
+            context.fn = this; // this就是这个函数
+            context.fn() // 要绑定this, 就只能把这个方法加到目标对象里面
+            delete context.fn; // 然后删除即可
+        }
+
+        // 第二版 // 解决传参问题, 但this可以指定为null, 此时this指向window
+        Function.prototype.myCall2 = function (context) {
+            context.fn = this;
+            var args = [];
+            for (var i = 1, len = arguments.length; i < len; i ++) {
+                args.push('arguments[' + i + ']')
+            }
+            eval('context.fn(' + args + ')');
+            delete context.fn;
+        }
+        sayName.myCall2(obj)
+        // 第三版 解决this传null问题 // 返回值问题
+        Function.prototype.myCall3 = function (context) {
+            context = context || window;
+            context.fn = this;
+            var args = [];
+            for (var i = 1, len = arguments.length; i < len; i ++) {
+                args.push('arguments[' + i + ']')
+            }
+            var result = eval('context.fn(' + args + ')');
+            delete context.fn;
+            return result;
+        }
+
+        // apply模拟实现//和call差不多
+        // 只不过传参方式不同
+
+
+        console.log('---------------------------------bind实现-------------------------------')
+        // bind返回值永久改变目标函数this指向
+        Function.prototype.mybind = function (context) {
+            var self = this;
+            return function () {
+                self.apply(context)
+            }
+        }
+    </script>
+</body>
+</html>

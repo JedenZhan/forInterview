@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // AMD
+        
+        define(['./a', './b'], function(a, b) {
+            a.do()
+            b.do()
+        })
+        define(function(require, exports, module) {
+            var a = require('./a')
+            a.doSomething()
+            var b = require('./b')
+            b.doSomething()
+        })
+
+
+
+        // CommonJS
+        // 实现: Node
+        module.exports = {
+            a = 1 // 暴露一个对象
+        }
+
+        const a = require('path')
+        // a.a 访问
+        
+
+        // ES6
+        var a = 1;
+        exports =  {
+
+        }
+        export default a
+    
+    
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 简单闭包
+        function a() {
+            var a = 1;
+            function b() {
+                console.log(a)
+            }
+            return b;
+        }
+        var c = a()
+        c()
+        
+
+        // 经典面试题
+        for (var a = 0; a < 10; a ++) {
+            setTimeout(() => {
+                console.log(a)
+            }, 1000);
+        }
+        // 打印十个10
+        // 第一种解决方法
+        for (var a = 1; a < 10; a ++) {
+            (function(j) {
+                setTimeout(() => {
+                    console.log(j)
+                }, j * 1000)
+            })(a)
+        }
+
+        // 第二种
+        for (var a = 0; a < 10; a ++) {
+            setTimeout((j) => {
+                console.log(j)
+            }, 1000, a);
+        }
+        // 第三种
+        for (let a = 0; a < 10; a ++) {
+            setTimeout(() => {
+                console.log(a)
+            }, 1000);
+        }
+        // 问到闭包时, 希望你们可以从作用域,作用域链开始,然后解释闭包
+    </script>
+
+
+</body>
+</html>

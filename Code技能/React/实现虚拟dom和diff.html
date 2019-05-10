@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		.list {
+			color: #f00
+		}
+	</style>
+</head>
+
+<body>
+	<div id="app"></div>
+	<script>
+		// --------------------------------------------------------------------------------------------------------虚拟DOM
+		class vertualNode { // 创建虚拟节点
+			constructor(el, props, child) {
+				this.el = el;
+				this.props = props;
+				this.child = child;
+			}
+		}
+
+		function setAttr(node, key, value) { // 设置属性函数
+			switch (key) {
+				case 'value':
+					if (node.tagName.toUpperCase() === 'INPUT' || node.tagName.toUpperCase === 'TEXTAREA') {
+						node.value = value
+					} else {
+						node.setAttribute(key, value)
+					}
+					break;
+				case 'style':
+					node.style.cssname = value;
+					break
+				default:
+					node.setAttribute(key, value)
+					break
+			}
+		}
+
+		function createElement(el, props, child) { // 工厂模式
+			return new vertualNode(el, props, child)
+		}
+
+		function render(eleObj) { // 渲染虚拟节点
+			let el = document.createElement(eleObj.el)
+
+			for (let key in eleObj.props) {
+				setAttr(el, key, eleObj.props[key])
+			}
+
+			eleObj.child.forEach(child => {
+				child = (child instanceof vertualNode) ? render(child) : document.createTextNode(child)
+				el.appendChild(child)
+			});
+
+			return el
+		}
+
+		function renderDom(realDom, rootEl) {
+			rootEl.appendChild(render(vertualDom))
+		}
+		// --------------------------------------------------------------------------------------------------------虚拟DOM结束
+		// 文档碎片???????????
+
+
+		// 尝试一下吧
+		let vertualDom1 = createElement('ul', {
+			class: 'list'
+		}, [
+			createElement('li', {
+				class: 'item'
+			}, ['a']),
+			createElement('li', {
+				class: 'item'
+			}, ['b']),
+			createElement('li', {
+				class: 'item'
+			}, ['c'])
+		])
+
+		let vertualDom2 = createElement('ul', {
+			class: 'list'
+		}, [
+			createElement('li', {
+				class: 'item'
+			}, ['2']),
+			createElement('li', {
+				class: 'item'
+			}, ['b']),
+			createElement('li', {
+				class: 'item'
+			}, ['4'])
+		])
+
+		// -------------------------------------------------------------------------------------------------------------diff算法开始
+		// 当修改了虚拟DOM, diff算法使用最小代价去更新DOM
+		// 两个DOM比较创建出来补丁, 利用这个补丁描述虚拟DOM的变化, 并且利用补丁去更新DOM
+
+
+		// ---------------------------------------------------------------------------------------------------------------diff算法结束
+		let realDom = render(vertualDom)
+
+		renderDom(realDom, document.getElementById('app'))
+	</script>
+</body>
+
+</html>

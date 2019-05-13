@@ -20,6 +20,29 @@ Watch：当你需要在数据变化响应时，执行异步操作，或高性能
 
 
 
+## Vue 生命周期(函数) Vue的是Before..,React的是Will..不能记混了!!!!
+
+- beforeCtreate
+  - 刚准备创建vue实例对象, 不能访问data, methods
+- created
+  - data和methods创建完成
+  - 经常发起ajax请求获取数据
+- beforeMount
+  - 虚拟DOM还没渲染到页面上
+- mounted
+  - 组件创建的最后一个生命周期, 进行完毕后就到了运行中的阶段
+  - 如果用到了UI插件, 那么在mounted内初始化插件
+- beforeUpdate
+  - data变化的时候触发, 有选择的触发
+- updated
+  - 更新完毕
+- beforeDestroy
+  - $destroy被调用的时候被触发
+- destroyed
+  - 组件被销毁
+
+
+
 
 ## vue-router
 ### 路由基本使用
@@ -101,8 +124,6 @@ const routes = [
 
 
 
-
-
 ## vuex
 
 Vuex 并不限制你的代码结构。但是，它规定了一些需要遵守的规则：
@@ -115,19 +136,7 @@ Vuex 并不限制你的代码结构。但是，它规定了一些需要遵守的
 
 
 
-
-
-
-
-
-
 ##  微重构
-
-
-
-
-
-
 
 
 

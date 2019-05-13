@@ -13,7 +13,8 @@ const config = {
         chunkFilename: '[id].[hash].js'
     },
     module: {
-        rules: [{
+        rules: [
+            {
                 test: /\.vue$/,
                 use: 'vue-loader'
             },

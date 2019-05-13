@@ -13,37 +13,41 @@
       <el-button @click="increaseCount">count-1</el-button>
       <el-button @click="keep">keepCount</el-button>
     </p>
+    <router-view></router-view>
     <hr>
         <h1>组件传值</h1>
         <h2>父传子</h2>
-        <Child message="Jeden"/>
+        <Child1 message="Jeden"/>
         <h2>子传父</h2>
-        
+        {{childMessage}}
+        <Child2 @listenChildEvent='showMessageFromChild'></Child2>
     <hr>
 
-    <router-view></router-view>
   </div>
 </template>
 <script>
-import Child from './components/Child.vue'
+import Child1 from './components/Child1.vue';
+import Child2 from './components/Child2.vue'
 export default {
   name: "App",
 
   data() {
     return {
-      data1: "nice"
+      data1: "nice",
+      childMessage: ''
       // vuexData: this.$store.state.count // 初步访问vuex-store
     };
   },
   components: {
-    Child
+    Child1,
+    Child2
   },
   methods: {
     tofoo() {
       this.$router.push("/foo"); // 编程式导航, 利用js控制导航逻辑
     },
     toMine() {
-      this.$router.push("/mine/:123456");
+      this.$router.push("/mine/:123456"); // 路由传参
     },
 
     // 以下为 vuex
@@ -52,12 +56,16 @@ export default {
       console.log(this.$store.state.count);
     },
     increaseCount() {
-      this.$store.commit("incerise");
+      this.$store.commit("incerise"); // 提交一个action
       console.log(this.$store.state.count);
     },
     keep() {
-      this.$store.dispatch("keep");
+      this.$store.dispatch("keep"); // 派发多个action
+    },
+    showMessageFromChild (data) {
+      this.childMessage = data
     }
+
   },
   computed: {
     vuexData1() {
@@ -76,4 +84,3 @@ export default {
   color: #00f;
 }
 </style>
-

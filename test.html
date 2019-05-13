@@ -27,11 +27,24 @@
 
 
     <script>
-        function print(v) {
-            console.log(v)
-        }
-        var arr1 = []
+        class People {
+            constructor(name) {
+                this.name = name;
+                // this.getName = this.getName.bind(this)
+            }
 
+            doGetName () {
+                debugger
+                this.getName()
+            }
+
+            getName () {
+                console.log(this.name)
+            }
+        }
+        let p1 = new People('Jeden')
+        console.log(p1)
+        p1.doGetName()
     </script>
 
 </body>

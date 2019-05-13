@@ -10,7 +10,7 @@ import router from './route/index.js'
 import store from './store/store.js'
 
 
-Vue.use(VueRouter) // 告诉Vue使用了Vue
+Vue.use(VueRouter) // 告诉Vue使用了VueRouter
 Vue.use(ElementUI)
 
 new Vue({

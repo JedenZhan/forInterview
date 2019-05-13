@@ -9,8 +9,8 @@ const store = new Vuex.Store({
     state: {
         count: 0
     },
-    mutations: mutations,
-    actions: actions
+    mutations,
+    actions
 })
 
 export default store

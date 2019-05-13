@@ -63,10 +63,60 @@
 		}
 
 		function renderDom(realDom, rootEl) {
-			rootEl.appendChild(render(vertualDom))
+			rootEl.appendChild(realDom)
 		}
 		// --------------------------------------------------------------------------------------------------------虚拟DOM结束
 		// 文档碎片???????????
+
+
+		// -------------------------------------------------------------------------------------------------------------diff算法开始
+		// 当修改了虚拟DOM, diff算法使用最小代价去更新DOM
+		// 两个DOM比较创建出来补丁, 利用这个补丁描述虚拟DOM的变化, 并且利用补丁去更新DOM
+		
+		// 入口函数
+		function diff(oldTree, newTree) {
+			let patches = {};
+			let index = 0; // diff算法的比较层级
+
+			//真正的比较函数, 将比较后的结果放到补丁包中
+			walk(oldTree, newTree, index, patches);
+
+			return patches;
+		}
+
+		// 属性比较函数
+		function diffAttr(oldAttrs, newAttrs) {
+			let patche = {};
+			// 判断老的属性和新的属性的关系
+			for (let key in oldAttrs) {
+				if (oldAttrs[key] !== newAttrs[key]) {
+					patche[key] = newAttrs[key]; // 有可能是undefined
+				}
+			}
+			// 判断是否有新增属性
+			for (let key in newAttrs) {
+				if (!oldAttrs.hasOwnProperty(key)) {
+					patch[key] = newAttrs[key]
+				}
+			}
+			return patche;
+		}
+		// 主diff函数
+		function walk(oldNode, newNode, index, patches) {
+			let currentPatch = [];
+			if (oldNode.type === newNode.type) {
+				let attrs = diffAttr(oldNode.props, newNode.props);
+				console.log(attrs)
+				if (Reflect.ownKeys(attrs).length > 0) {
+					currentPatch.push({type: 'ATTRS', attrs})
+				}
+			}
+			patches[index] = currentPatch
+		}
+
+		// ---------------------------------------------------------------------------------------------------------------diff算法结束
+
+
 
 
 		// 尝试一下吧
@@ -85,10 +135,10 @@
 		])
 
 		let vertualDom2 = createElement('ul', {
-			class: 'list'
+			class: 'list-attr'
 		}, [
 			createElement('li', {
-				class: 'item'
+				class: 'item-list'
 			}, ['2']),
 			createElement('li', {
 				class: 'item'
@@ -98,13 +148,11 @@
 			}, ['4'])
 		])
 
-		// -------------------------------------------------------------------------------------------------------------diff算法开始
-		// 当修改了虚拟DOM, diff算法使用最小代价去更新DOM
-		// 两个DOM比较创建出来补丁, 利用这个补丁描述虚拟DOM的变化, 并且利用补丁去更新DOM
+		let diffs = diff(vertualDom1, vertualDom2); // react在一定条件下会进行diff操作,比如setState, props更新
 
+		console.log(diffs)
 
-		// ---------------------------------------------------------------------------------------------------------------diff算法结束
-		let realDom = render(vertualDom)
+		let realDom = render(vertualDom1)
 
 		renderDom(realDom, document.getElementById('app'))
 	</script>

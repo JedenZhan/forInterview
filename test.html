@@ -1,72 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
-    <style>
-        
-    </style>
-    
+    <script src="./test.js"></script>
 </head>
-
 <body>
-    <div id="app">
-        {{hello}}
-    </div>
-
-    <script>
-        const vm = new Vue({
-            el: '#app',
-            data: {
-                hello: 'Jeden'
-            },
-            methods: {
-                say () {
-                    console.log('hello')
-                }
-            },
-            computed: {
-                add () {
-                    return 1 + 1
-                }
-            },
-            watch: {
-                hello () {
-                    console.log('data changed')
-                }
-            },
-            beforeCreate() {
-                console.log('beforeCreate', vm)
-            },
-            created() {
-                console.log('created', vm)
-            },
-            beforeMount() {
-                console.log('beforeMount', vm)
-            },
-            mounted () {
-                console.log('mounted', vm)
-            },
-            beforeUpdate() {
-                console.log('beforeUpdate', vm)
-            },
-            updated() {
-                console.log('updated', vm)
-            },
-            beforeDestroy() {
-                console.log('beforeDestroy', vm)
-            },
-            destroyed() {
-                console.log('destroyed', vm)
-            },
-        })
-        console.log(vm)
-    </script>
-
+    
 </body>
-
 </html>

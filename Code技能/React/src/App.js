@@ -20,7 +20,6 @@ class App extends React.Component {
             num: 1,
         }
         this.plusCount = this.plusCount.bind(this)
-        
     }
     render () {
         return (
@@ -73,7 +72,6 @@ class App extends React.Component {
     componentWillUnmount() {
         console.log('will unmount')
     }
-    
 }
 
 export default App

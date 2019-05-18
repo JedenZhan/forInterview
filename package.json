@@ -1,0 +1,27 @@
+{
+  "name": "Interview",
+  "version": "1.0.0",
+  "description": "本人非计算机专业, 所以弱势在于计算机网络基础, 计算机操作系统, 数据结构算法等",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JedenZhan/forInterview.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JedenZhan/forInterview/issues"
+  },
+  "homepage": "https://github.com/JedenZhan/forInterview#readme",
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.13.0"
+  }
+}

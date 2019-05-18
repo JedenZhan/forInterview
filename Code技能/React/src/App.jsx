@@ -1,12 +1,12 @@
-import React from 'react'
-import { Button } from 'antd'
+import React, { Fragment } from 'react';
+import { Button } from 'antd';
 
-import { Link } from 'react-router-dom'
-import './style/index.styl'
+import { Link } from 'react-router-dom';
+import './style/index.styl';
 
-import TryHooks from './components/TryHooks.js'
+import TryHooks from './components/TryHooks.js';
 
-// 两种声明组件的方式, class 和 function 
+// 两种声明组件的方式,class和function
 // 区别就是 function 只有 props, 没有自己的状态(state), 没有生命周期, 但是效率高
 // class 全都有
 
@@ -23,7 +23,7 @@ class App extends React.Component {
     }
     render () {
         return (
-            <div>
+            <Fragment>
                 本例子仅讲解, 请阅读源码与目录结构
                 <ul>
                     <li>
@@ -39,18 +39,17 @@ class App extends React.Component {
                 <Button> count - 1 </Button>
                 <TryHooks></TryHooks>
                 
-            </div>
+            </Fragment>
         )
     }
     // conut + 1
     plusCount () {
-        alert(1)
-        
+        alert(1);
     }
 
     // 生命周期
     componentWillMount() {
-        console.log('will mount')
+        console.log('will mount');
     }
     componentDidMount() {
         console.log('did mount')

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import './style/index.styl';
 
 import TryHooks from './components/TryHooks.js';
-
+import Counters from './components/MoshVideo/Counters.js'
 // 两种声明组件的方式,class和function
 // 区别就是 function 只有 props, 没有自己的状态(state), 没有生命周期, 但是效率高
 // class 全都有
@@ -38,7 +38,10 @@ class App extends React.Component {
                 <Button onClick={this.plusCount}> count + 1 </Button>
                 <Button> count - 1 </Button>
                 <TryHooks></TryHooks>
-                
+                <hr />
+                    视频实例
+                <hr />
+                <Counters />
             </Fragment>
         )
     }

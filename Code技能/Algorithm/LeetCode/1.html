@@ -164,8 +164,9 @@
         // console.log(advantageCount([12, 24, 8, 32], [13, 25, 32, 11]))
         '107. 二叉树的层次遍历 II'
         var levelOrderBottom = function (root) {
-            
-            let result = [], item,
+
+            let result = [],
+                item,
                 root2 = Array.from(root);
             for (let i = 0, j = 1; root2.length != 0; j *= 2) {
                 item = root2.splice(i, j);
@@ -173,7 +174,17 @@
             }
             return result
         };
-        print(levelOrderBottom([3,9,20,null,null,15,7]))
+        // print(levelOrderBottom([3, 9, 20, null, null, 15, 7]))
+
+        var findNthDigit = function (n) {
+            if (n < 10) return n;
+            var str = '';
+            for (let i = 1; i < n; i++) {
+                str += i;
+            }
+            return str[n - 1];
+        };
+        print(findNthDigit(10000000))
     </script>
 </body>
 

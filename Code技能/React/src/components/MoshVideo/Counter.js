@@ -5,7 +5,7 @@ class Counter extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      value: this.props.value
+      value: this.props.counter.value
     }
   }
   style = {
@@ -15,7 +15,10 @@ class Counter extends Component {
     return (
       <React.Fragment>
         {this.props.children} {/*插槽? 是你吗*/}
-        {this.formatCount()}<Button type='primary' style={this.style} onClick={this.handleAdd}>ADD??</Button> <br />
+        {this.formatCount()}
+        <Button type='primary' style={this.style} onClick={this.handleAdd}>ADD??</Button>
+        <Button type='danger' style={this.style} onClick={() => this.props.onDelete(this.props.counter.id)}>Detete</Button> {/**emit? 是你吗, 如果不外面嵌套一个函数, 会直接执行函数 */}
+        <br />
       </React.Fragment>
     );
     

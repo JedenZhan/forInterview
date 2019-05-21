@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function reConstructBinaryTree(pre, vin) {
+      // write code here
+      var result = null;
+      if (pre.length > 1) {
+        var root = pre[0];
+        var vinRootIndex = vin.indexOf(root);
+        var vinLeft = vin.slice(0, vinRootIndex);
+        var vinRight = vin.slice(vinRootIndex + 1, vin.length);
+        pre.shift();
+        var preLeft = pre.slice(0, vinLeft.length);
+        var preRight = pre.slice(vinLeft.length, pre.length);
+        result = {
+          val: root,
+          left: reConstructBinaryTree(preLeft, vinLeft), // 递归找出左右儿子
+          right: reConstructBinaryTree(preRight, vinRight)
+        }
+
+      } else if (pre.length === 1) { // 只有一个结果
+        result = {
+          val: pre[0],
+          left: null,
+          right: null
+        }
+      }
+      return result;
+    }
+
+    function minNumberInRotateArray(rotateArray) {
+      // write code here
+      let arrLen = rotateArray.length;
+      if (arrLen === 0) {
+        return 0;
+      }
+      for (let i = 0; i < arrLen; i ++) {
+        if (rotateArray[i] > rotateArray[i + 1]) {
+          return rotateArray[i + 1]
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

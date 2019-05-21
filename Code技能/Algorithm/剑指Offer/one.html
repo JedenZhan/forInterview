@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function print(e) {
+      console.log(e)
+    }
+    '二维数组寻找'
+
+    function Find(target, array) {
+      // write code here
+      let floarr = array.flat();
+      if (floarr.indexOf(target) === -1) {
+        return false
+      }
+      return true
+    }
+    // print(Find(1, [[1]]))
+    function replaceSpace(str) {
+      // write code here
+      return str.replace(/\s/g, '%20')
+    }
+    print(replaceSpace('z  z   z'))
+  </script>
+</body>
+
+</html>

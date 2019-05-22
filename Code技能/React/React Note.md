@@ -93,7 +93,11 @@ React生命周期分为三个步骤: **创建挂载, 运行更新, 销毁**
 - 销毁 ---- 只执行一次
   - componentWillUnmount()
 
+## 唯一数据源
 
+数据源的话,有props和state, 如果把props保存到state, 就不是唯一数据源, 虽然props更新了, 但是组件本身state没有更新
+
+这样的组件叫做受控组件
 
 ## Redux
 

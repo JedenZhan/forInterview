@@ -49,24 +49,25 @@ class Counters extends Component {
       counters
     })
   }
-  getAll = () => {
-    const counters = this.state.counters,
-      length = counters.length;
-    let all = 0
-    for (let i = 0; i < length; i ++) {
-      all += counters[i].value
-    }
-    this.setState({
-      all
-    })
-  }
+  // getAll = () => {
+  //   const counters = this.state.counters,
+  //     length = counters.length;
+  //   let all = 0
+  //   for (let i = 0; i < length; i ++) {
+  //     all += counters[i].value
+  //   }
+  //   this.setState({
+  //     all
+  //   })
+  // }
   componentWillMount () {
-    this.getAll()
+    // this.getAll()
   }
   render() {
     return (
       <React.Fragment>
-        <h1>Title {this.state.all}</h1>
+        <h1>Total {this.state.counters.reduce((a, b) => {return a + b.value}, 0)}</h1>
+        {/* reduce用法,  */}
         <Button onClick={this.handleReset}>Reset</Button> <br />
         {this.state.counters.map(counter => (
           <Counter 

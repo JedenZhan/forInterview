@@ -2,12 +2,6 @@ import React, { Component } from 'react';
 import { Button } from 'antd'
 
 class Counter extends Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-      value: this.props.counter.value
-    }
-  }
   style = {
     margin: '10px'
   }
@@ -16,7 +10,7 @@ class Counter extends Component {
       <React.Fragment>
         {this.props.children} {/*插槽? 是你吗*/}
         {this.formatCount()}
-        <Button type='primary' style={this.style} onClick={this.handleAdd}>ADD??</Button>
+        <Button type='primary' style={this.style} onClick={() => this.props.onIncrement(this.props.counter)}>ADD??</Button>
         <Button type='danger' style={this.style} onClick={() => this.props.onDelete(this.props.counter.id)}>Detete</Button> {/**emit? 是你吗, 如果不外面嵌套一个函数, 会直接执行函数 */}
         <br />
       </React.Fragment>
@@ -24,18 +18,18 @@ class Counter extends Component {
     
   }
   formatCount () {
-    const { value } = this.state
+    const { value } = this.props.counter
     return value === 0 ? 'Zero' : value
   }
   getProps =  () => {
     console.log(this.props)
   }
-  handleAdd = () => {
-    this.getProps()
-    this.setState({
-      value: this.state.value + 1
-    })
-  }
+  // handleAdd = () => {
+  //   this.getProps()
+  //   this.setState({
+  //     value: this.state.value + 1
+  //   })
+  // }
 }
  
 export default Counter;

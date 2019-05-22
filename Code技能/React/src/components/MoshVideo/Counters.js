@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Counter from "./Counter.js";
-
+import {Button} from 'antd';
 class Counters extends Component {
   state = {
     counters: [
@@ -29,15 +29,58 @@ class Counters extends Component {
       counters: counters
     })
   }
+  handleIncrement = (counter) => {
+    console.log(counter)
+    const counters = [...this.state.counters];
+    const index = counters.indexOf(counter);
+    counters[index] = {...counter};
+    counters[index].value ++;
+    this.setState({
+      counters
+    })
+  }
+  handleReset = () => {
+    const counters = this.state.counters,
+      length = counters.length;
+    for (let i = 0; i < length; i ++) {
+      counters[i].value = 0
+    }
+    this.setState({
+      counters
+    })
+  }
+  getAll = () => {
+    const counters = this.state.counters,
+      length = counters.length;
+    let all = 0
+    for (let i = 0; i < length; i ++) {
+      all += counters[i].value
+    }
+    this.setState({
+      all
+    })
+  }
+  componentWillMount () {
+    this.getAll()
+  }
   render() {
     return (
       <React.Fragment>
+        <h1>Title {this.state.all}</h1>
+        <Button onClick={this.handleReset}>Reset</Button> <br />
         {this.state.counters.map(counter => (
-          <Counter key={counter.id} counter={counter} onDelete={this.handleDelete}><h1>Title</h1></Counter>
+          <Counter 
+            key={counter.id}
+            counter={counter}
+            onDelete={this.handleDelete}
+            onIncrement={this.handleIncrement}
+          >
+            {/* <h1>Title</h1> */}
+          </Counter>
         ))}
       </React.Fragment>
     );
   }
 }
- 
+
 export default Counters;

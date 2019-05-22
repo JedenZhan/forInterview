@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function print(e) {
+      console.log(e)
+    }
+
+    function Fibonacci(n) {
+      if (n <= 1) {
+        return n;
+      } else {
+        let f0 = 0,
+          f1 = 1,
+          f2;
+        for (let i = 2; i <= n; i++) {
+          f2 = f0 + f1;
+          f0 = f1;
+          f1 = f2;
+        }
+        return f2;
+      }
+    }
+    // print(Fibonacci(3))
+
+    function jumpFloor(number) {
+      // write code here
+      if (n === 1) {
+        return 1;
+      }
+      let arr = [1, 1];
+      for (let i = 2; i <= number; i++) {
+        arr[i] = arr[i - 1] + arr[i - 2];
+      }
+      return arr[number];
+    }
+  </script>
+</body>
+
+</html>

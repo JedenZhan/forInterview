@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import Counter from "./Counter.js";
 import {Button} from 'antd';
 class Counters extends Component {
@@ -48,6 +48,7 @@ class Counters extends Component {
     this.setState({
       counters
     })
+    console.log(this.state.counters)
   }
   // getAll = () => {
   //   const counters = this.state.counters,

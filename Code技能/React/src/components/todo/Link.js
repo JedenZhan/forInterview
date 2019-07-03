@@ -25,4 +25,4 @@ Link.propTypes = { // 类似Vue的prop设置, 包括是否必须, 数据类型�
   onClick: PropTypes.func.isRequired
 }
 
-export default Link
+export default Link;

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function curry(fn) {
+			let args = [].slice.call(arguments, 1);
+			return function () {
+				let newArgs = args.concat([].slice.call(arguments));
+				return fn.apply(this, newArgs)
+			}
+		}
+		function add(a, b) {
+			return a + b;
+		}
+		let curred = curry(add);
+		console.log(curred(1, 2));
+	</script>
+</body>
+</html>

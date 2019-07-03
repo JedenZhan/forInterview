@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function print(e) {
+      console.log(e)
+    }
+
+    function reOrderArray(array) {
+      // write code here
+      let result = [];
+      for (let i = 0, len = array.length; i < len; i++) {
+        if (array[i] % 2 === 0) {
+          result.push(array[i]);
+        } else {
+          result.unshift(array[i])
+        }
+      }
+      return result;
+    }
+    print(reOrderArray([1, 2, 3, 4, 5]))
+
+    function FindKthToTail(head, k) {
+      var arr = [];
+      while (head != null) { // 当前元素不为null
+        arr.push(head);
+        head = head.next; // 改变当前元素
+      }
+      return arr[arr.length - k];
+    }
+  </script>
+</body>
+
+</html>

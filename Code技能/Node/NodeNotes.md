@@ -67,7 +67,7 @@ Node 使用 事件驱动程序, 当 web server 收到了请求,就把它关闭�
 
 
 
-![img](/home/jedenzhan/Documents/Interview/代码技能/Node/images/event_loop.jpg)
+![img](./images/event_loop.jpg)
 
 
 

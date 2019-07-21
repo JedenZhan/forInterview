@@ -142,7 +142,7 @@ Vuex 并不限制你的代码结构。但是，它规定了一些需要遵守的
 
 ## new Vue()发生了什么
 
-![img](/home/jedenzhan/Documents/Interview/代码技能/Vue/index/dist/vue内部简单原理.png)
+![img](./dist/vue内部简单原理.png)
 
 
 

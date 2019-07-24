@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr1 = [
+            [1, 2, 3, 4, 5],
+            [14, 15, 16, 17, 6],
+            [13, 20, 19, 18, 7],
+            [12 ,11, 10, 9, 8]
+        ]
+        function test(arr) {
+            let row = arr.length,
+                col = arr[0].length
+            if (row === 0 || col === 0) {
+                return arr
+            }
+            let top = 0,
+                left = 0,
+                bottom = row - 1,
+                right = col - 1,
+                res = []
+            while (top < bottom && left < right) {
+                for (let i = left; i <= right; i ++) {
+                    res.push(arr[top][i])
+                }
+                for (let i = top + 1; i <= bottom; i ++) {
+                    res.push(arr[i][right])
+                }
+                if (top != bottom) {
+                    for (let i = right - 1; i >= left; i --) {
+                        res.push(arr[bottom][i])
+                    }
+                }
+                if (left != right) {
+                    for (let i = bottom - 1; i > top; i --) {
+                        res.push(arr[i][left])
+                    }
+                }
+                left ++, top ++, bottom --, right --
+            }
+            return res
+        }
+        console.log(test(arr1))
+    
+    </script>
+</body>
+</html>

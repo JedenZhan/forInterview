@@ -1,13 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <script src="./test.js"></script>
+    <!-- <script src="./test.js"></script> -->
 </head>
+
 <body>
     <input type="number">
+    <script>
+        function test(arr) {
+            let result = []
+            for (let i = 0; i < arr.length; i++) {
+                console.log(Array.isArray(arr[i]))
+                if (Array.isArray(arr[i])) {
+                    result = result.concat(test(arr[i]))
+                } else {
+                    result.push(arr[i])
+                }
+            }
+            return result
+        }
+        console.log(test([1, 2, 3, [1, 2, 3]]))
+    </script>
 </body>
+
 </html>

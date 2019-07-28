@@ -3,16 +3,35 @@
 ## ES6 新特性
 
 1. 变量声明let, const
-2. 箭头函数
-3. Class语法糖
-4. Promise解决异步调用
-5. 解构赋值
-6. Symbol
-7. Set和Map新数据类型
-8. 模块化
-9. async 异步
-10. Proxy 代理
-11. Generator
+2. 字符串扩展
+3. 数组扩展
+4. 函数扩展
+5. 对象扩展
+6. 箭头函数
+7. Class语法糖
+8. Promise解决异步调用
+9. 解构赋值
+10. Symbol
+11. Set和Map新数据类型
+12. 模块化
+13. async 异步
+14. Proxy 代理
+15. Generator
+
+## 数组扩展
+### 展开运算符
+### Array.from()
+将伪数组转化为真正的数组
+### Array.of()
+主要为了弥补Array构造函数的不足
+### 数组实例的find()
+find()用于查找数组元素, 接受一个回调函数
+```js
+let arr = [1, 2, 3, 4]
+
+arr.find((n) => n < 3) // 1
+```
+遍历函数, 直到找到符合回调函数条件的成员停止, 否则返回undefined
 
 ## Set
 
@@ -86,20 +105,3 @@ function reverse(fn) {
     }
 }
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

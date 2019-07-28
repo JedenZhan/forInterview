@@ -62,7 +62,7 @@
 >
 > element diff : 元素级别的对比
 
-![img](/home/jedenzhan/Documents/Interview/代码技能/React/assets/diff-.png)
+![img](./assets/diff-.png)
 
 
 
@@ -72,7 +72,7 @@
 
 ## React 生命周期
 
-![img](/home/jedenzhan/Documents/Interview/代码技能/React/assets/lifeCircle.webp)
+![img](./assets/lifeCircle.webp)
 
 
 

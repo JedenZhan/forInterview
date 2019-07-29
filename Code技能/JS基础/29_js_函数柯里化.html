@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 函数柯里化是多个参数可以多次传入的效果
+
+    function add(a, b) {
+      return a + b
+    }
+    // 第一版本
+    function sub_curry(fn) {
+      let args = Array.prototype.slice.call(arguments, 1)
+      return function () {
+        let newArgs = args.concat(Array.prototype.slice.call(arguments))
+        return fn.apply(this, newArgs)
+      }
+    }
+
+    function curry(fn, length) {
+      length = length || fn.length
+
+      let slice = Array.prototype.slice
+
+      return function () {
+        if (arguments.length < length) {
+          let combined = [fn].concat(slice.call(arguments))
+          return curry(sub_curry.apply(this, combined), length - arguments.length)
+        } else {
+          return fn.apply(this, arguments)
+        }
+      }
+    }
+    
+    let addCurry = curry(add, 1, 2)
+    
+    
+    
+  </script>
+</body>
+</html>

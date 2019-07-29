@@ -10,21 +10,34 @@
 </head>
 
 <body>
-    <input type="number">
+    <input type="text" onchange="dataChanged()">
     <script>
-        function test(arr) {
-            let result = []
-            for (let i = 0; i < arr.length; i++) {
-                console.log(Array.isArray(arr[i]))
-                if (Array.isArray(arr[i])) {
-                    result = result.concat(test(arr[i]))
-                } else {
-                    result.push(arr[i])
-                }
+        // function test(arr) {
+        //     let result = []
+        //     for (let i = 0; i < arr.length; i++) {
+        //         console.log(Array.isArray(arr[i]))
+        //         if (Array.isArray(arr[i])) {
+        //             result = result.concat(test(arr[i]))
+        //         } else {
+        //             result.push(arr[i])
+        //         }
+        //     }
+        //     return result
+        // }
+        // console.log(test([1, 2, 3, [1, 2, 3]]))
+        let options = {
+            data: {
+                value: "jeden"
             }
-            return result
         }
-        console.log(test([1, 2, 3, [1, 2, 3]]))
+        let $data = options.data
+        Object.keys($data).forEach(item => Object.defineProperty($data, item, {
+            enumerable: true,
+            configurable: false,
+            get: () => {
+                return 
+            }
+        }))
     </script>
 </body>
 

@@ -14,11 +14,11 @@ class MVVM {
     this.$compile = new Compile(options.el || document.body, this) // 获取容器
   }
   
-  $watch = (key, cb, options) => {
+  $watch = (key, cb) => {
     new Watcher(this, key, cb)
   }
 
-  _proxyData = (key, setter, getter) => {
+  _proxyData = (key, setter) => {
     console.log('数据代理执行')
     let me = this
     setter = setter || Object.defineProperty(me, key, {

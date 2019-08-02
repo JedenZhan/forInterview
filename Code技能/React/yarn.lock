@@ -4417,7 +4417,7 @@ pkg-dir@^3.0.0:
 
 pnp-webpack-plugin@^1.5.0:
   version "1.5.0"
-  resolved "https://registry.npm.taobao.org/pnp-webpack-plugin/download/pnp-webpack-plugin-1.5.0.tgz?cache=0&sync_timestamp=1559802934675&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fpnp-webpack-plugin%2Fdownload%2Fpnp-webpack-plugin-1.5.0.tgz#62a1cd3068f46d564bb33c56eb250e4d586676eb"
+  resolved "https://registry.npm.taobao.org/pnp-webpack-plugin/download/pnp-webpack-plugin-1.5.0.tgz#62a1cd3068f46d564bb33c56eb250e4d586676eb"
   integrity sha1-YqHNMGj0bVZLszxW6yUOTVhmdus=
   dependencies:
     ts-pnp "^1.1.2"

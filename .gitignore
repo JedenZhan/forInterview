@@ -1,8 +1,10 @@
 node_modules/
-Code技能/React/node_modules
-Code技能/Vue/node_modules
-Code技能/Node/node_modules
-Code技能/Babel/node_modules
+Code技能/node_modules
+Code技能/React/.pnp
+Code技能/Vue/.pnp
+Code技能/Node/.pnp
+Code技能/Babel/.pnp
+
 .vscode
 *.log
 .idea​​

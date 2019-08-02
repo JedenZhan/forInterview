@@ -1,7 +1,7 @@
 const path = require('path'),
     webpack = require('webpack'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
-    ExtractTextPlugin = require("extract-text-webpack-plugin");
+    PnpWebpackPlugin = require('pnp-webpack-plugin')
 
 const config = {
     mode: 'development',
@@ -26,34 +26,8 @@ const config = {
             },
             {
                 test: /\.css$/,
-                // exclude: /node_modules/,
                 use: ['style-loader', 'css-loader']
-                // ExtractTextPlugin.extract({
-                //     fallback: 'style-loader',
-                //     use: [{
-                //         loader: 'css-loader',
-                //         options: {
-                //             importLoaders: 1,
-                //             modules: true,
-                //             localIdentName: '[name]__[local]__[hash:base64:5]'
-                //         }
-                //     },
-                //     {
-                //         loader: 'postcss-loader',
-                //         options: {
-                //             ident: 'postcss',
-                //             plugins: () => [
-                //                 autoprefixer({
-                //                     browsers: [
-                //                        "> 1%",
-                //                        "last 2 versions"
-                //                     ]
-                //                 })
-                //             ]
-                //         }
-                //      }
-                //     ]
-                // })
+
             },
             {
                 test: /\.(jpg|jpeg|webp|png|gif)$/,
@@ -73,7 +47,15 @@ const config = {
             }
         ],
     },
-    // soloves: [ '', '.js', '.css', '.styl' ],
+    resolve: {
+        extensions: ['.js', '.ts', '.json', '.jsx', '.css'],
+        plugins: [PnpWebpackPlugin]
+    },
+    resolveLoader: {
+        plugins: [
+            PnpWebpackPlugin.moduleLoader(module)
+        ]
+    },
     plugins: [
         new HtmlWebpackPlugin({
             template: './index.html',
@@ -82,13 +64,12 @@ const config = {
         }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),
-        // new ExtractTextPlugin('bundle.css')
     ],
     
     devServer: {
         port: 8080,
         hot: true,
-        // open: true
+        open: true
     }
 }
 

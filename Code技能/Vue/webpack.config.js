@@ -1,7 +1,8 @@
 const path = require('path'),
     webpack = require('webpack'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
-    VuePlugin = require('vue-loader/lib/plugin')
+    VuePlugin = require('vue-loader/lib/plugin'),
+    PnpWebpackPlugin = require('pnp-webpack-plugin')
 
 
 const config = {
@@ -36,6 +37,15 @@ const config = {
             } // use会loaders一样, 可以传入数组, loader只需要一个
         ]
     },
+    resolve: {
+        extensions: ['.js', '.ts', '.json', '.jsx', '.css'],
+        plugins: [PnpWebpackPlugin]
+    },
+    resolveLoader: {
+        plugins: [
+            PnpWebpackPlugin.moduleLoader(module)
+        ]
+    },
     plugins: [
         new HtmlWebpackPlugin({
             template: './index.html'
@@ -45,7 +55,7 @@ const config = {
         new VuePlugin()
     ],
     devServer: {
-        port: 8080,
+        port: 8081,
         hot: true,
         open: true
     }

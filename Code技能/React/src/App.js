@@ -1,11 +1,6 @@
 import React, { Fragment } from 'react';
 import { Button } from 'antd';
 
-import { Link } from 'react-router-dom';
-import './style/index.styl';
-
-import TryHooks from './components/TryHooks.js';
-import Counters from './components/MoshVideo/Counters.js'
 // 两种声明组件的方式,class和function
 // 区别就是 function 只有 props, 没有自己的状态(state), 没有生命周期, 但是效率高
 // class 全都有
@@ -25,23 +20,7 @@ class App extends React.Component {
         return (
             <Fragment>
                 本例子仅讲解, 请阅读源码与目录结构
-                <ul>
-                    <li>
-                        <Link to='/foo'>ToFoo</Link> {/* Link表示到达哪个路由, 和vue-router的Router-Link类似 */}
-                    </li>
-                    <li>
-                        <Link to='/bar'>ToBar</Link>
-                    </li>
-                </ul>
-                <span>count值:{  }</span>
-                <Button>antd nice</Button>
-                <Button onClick={this.plusCount}> count + 1 </Button>
-                <Button> count - 1 </Button>
-                <TryHooks></TryHooks>
-                <hr />
-                    视频实例
-                <hr />
-                <Counters />
+                <Button>Init</Button>
             </Fragment>
         )
     }

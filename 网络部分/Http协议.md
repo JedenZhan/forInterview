@@ -2,43 +2,19 @@
 
 ### 请求方法
 
-GET`通过uri获取资源`, 
+GET`通过uri获取资源`, POST`用于添加新的内容`, PUT`用于修改某个内容`,DELETE`删除某个内容`, 
 
-POST`用于添加新的内容`, 
+CONNECT`用于代理进行传输,例如使用ssl`, OPTIONS`询问可以执行哪些方法`, PATCH`部分文档修改`, PROFIND`查看属性`, 
 
-PUT`用于修改某个内容`,
-
-DELETE`删除某个内容`, 
-
-CONNECT`用于代理进行传输,例如使用ssl`, 
-
-OPTIONS`询问可以执行哪些方法`, 
-
-PATCH`部分文档修改`, 
-
-PROFIND`查看属性`, 
-
-COPY`拷贝`, 
-
-MOVE`移动`, 
-
-LOCK`加锁`, 
-
-UNLOCK`解锁`, 
-
-TRACE`远程诊断服务器`, 
+COPY`拷贝`, MOVE`移动`, LOCK`加锁`, UNLOCK`解锁`, TRACE`远程诊断服务器`, 
 
 HEAD`类似get但不返回数据,用于检索数据, 返回数据元信息`
 
-
-
 ### URL和URI的区别
 
-URL指明一个资源的地址, 而且指明访问资源的方法
+URI 是统一资源标识符, URL 是统一资源定位符, URN 是统一资源名称
 
-URI只指明访问地址
-
-
+URI = URL + URN  (范围)
 
 ### 客户端请求格式
 

@@ -10,7 +10,7 @@
 
 [React](./Code技能/React/React.md)  
 [Vue](./Code技能/Vue/Vue.md)  
-[JS]()  
+[JS](./Code技能/JS.md)  
 [webpack](./Code技能/webpack.md)  
 [ES6](./Code技能/ES6/ES6.md)  
 [CSS](./Code技能/CSS.md)  

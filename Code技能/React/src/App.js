@@ -21,8 +21,10 @@ class App extends React.Component {
             <Fragment>
                 本例子仅讲解, 请阅读源码与目录结构
                 <Button>Init</Button>
+                
             </Fragment>
         )
+        
     }
     // conut + 1
     plusCount () {

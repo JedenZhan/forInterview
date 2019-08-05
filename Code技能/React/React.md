@@ -14,21 +14,13 @@
     "plugins": ["@babel/plugin-transform-react-jsx"]
 }
 
-创建`.gitignore`
-
-内容:
-
-/node_modules
+创建`.gitignore`    内容:  /node_modules
 
 ## 踩过的坑:
 
 1. events.js:183  throw er; // Unhandled 'error' event
 
 未知错误...我都是linux系统,因为监控文件数量过多超过系统设定.修改 /ect/sysctl.conf  `fs.inotify.max_user_watches=524288`  重启搞定
-
-2. 
-
-
 
 # React 讲解
 
@@ -43,8 +35,6 @@
 > 浏览器并没有提供 DOM tree API, React 使用**JS 对象**模拟 新旧 DOM 树
 >
 > 这个JS对象就叫虚拟DOM
-
-
 
 **那什么是 diff 算法呢: (differ)**
 
@@ -64,15 +54,7 @@
 
 ![img](./assets/diff-.png)
 
-
-
-
-
-
-
 ## React 生命周期
-
-![img](./assets/lifeCircle.webp)
 
 
 
@@ -101,27 +83,126 @@ React生命周期分为三个步骤: **创建挂载, 运行更新, 销毁**
 
 ## Redux
 
-具体使用见`/src/redux/store.js`jedenzhan
-
 ### 基本概念: 
 
 在redux中, 所有的数据保存在一个叫`store`的容器中, **并且一个程序只能有一个store, 不能有多个**, store本质上是一个状态树, 保存了所有数据的状态, 任何组件可以直接从store获取数据. 如果想要改变状态, 需分发一个  `action`, 分发的意思是把可执行信息发送给store, 当一个store接收到action, 它将把这个action代理给相关的`reducer`, reducer是一个纯函数, 它可以查看之前的状态, 并执行action, 然后返回新的状态
 
 **Redux只允许数据单向流动**
 
-![img](/home/jedenzhan/Documents/Interview/代码技能/React/assets/reduxData.png)
+![img](./assets/reduxData.png)
+
+### store.js 负责创建一个 store
+
+```js
+import { createStore } from 'redux'
+import rootReducer from './reducers'
+
+const store = createStore(rootReudcer)
+
+export default store
+```
 
 
 
+### reducers.js 负责创建 reducers
+
+```js
+import { combineReducers } from 'redux'
+
+let defaultState = {
+  // ...
+}
+
+const counter = (state = defaultState, action) => {
+  switch (action.type) {
+    case '...':
+      // ...
+      break
+  }
+}
+
+const rootReducer = combineReducers({ // 接受一个对象
+  counter
+})
+
+export default rootReducer
+```
 
 
-## 学习一个框架
 
-- 它是什么？能做什么？
-- 它存在的理由是什么？解决了什么样的问题、满足了什么样的需求？
-- 它的适用场景是什么？优缺点是什么？
-- 它怎么用？最佳实践是什么？
-- 它的原理是什么？(常问)
+### actions.js 负责保存 action
+
+```js
+import * as actionTypes from './actionTypes'
+
+export const action = {
+  state: {
+    // ...
+  },
+  type: actionTypes.//...
+}
+```
+
+
+
+### actionTypes.js 负责保存 actionTypes 
+
+>  因为actionTypes是字符串,并且派发,判断都需要使用, 很可能造成问题,并且不好排查, 所以单独抽离从来
+
+```js
+export const type1 = '...'
+// ...
+```
+
+### 基本使用
+
+```jsx
+import React, { Component, Fragment } from 'react'
+
+import store from './redux/store' // 导入store
+import { action } from './redux/actions'
+
+
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = store.getState() // 获取store内容,并保存为组件state
+  }
+  
+  handleClick = () => {
+    store.dispatch({
+      state: {},
+      type: ''
+    })
+  }
+  
+  render () {
+    return (
+    	<Fragment>
+      	<button onClick={this.handleClick}></button>
+      </Fragment>
+    )
+  }
+}
+```
+
+### 使用 react-redux 连接 redux
+
+```js
+
+```
+
+
+
+### redux-thunk 构建异步 action
+
+> 因为flux规范规定action只能是对象, 所以使用中间件redux-thunk来处理异步请求
+
+
+
+## Mobx
+
+相对Redux来说
 
 
 
@@ -137,16 +218,127 @@ React生命周期分为三个步骤: **创建挂载, 运行更新, 销毁**
 
 1. 和vue-router不一样, vue-router是配置路由, react-router更像管理组件, 把需要路由的组件导入到一个文件, 内部有路由的显示逻辑, 所以不需要类似router-view标签
 
-## Redux
+
+# React 新技术
+
+## Fiber
 
 
 
-### redux-thunk
 
 
+## Hooks
 
-### react-redux
+### 三个核心API
 
+useState, useEffect, useContext
+
+- useState
+
+基本使用: 
+
+```jsx
+import { useState, Fragment } from 'react'
+import { Button } from 'antd'
+
+const UseHooks_State = () => {
+  const [count, setCount] = useState(0) // count初始值为0, 然后每一次重新渲染都会获取到新的值, 比如+1后渲染, count 是 1, 就得到 1, 这个值由React保管
+  // ... useState可以多次调用, 设置多个值
+  return (
+    <Fragment>
+    	<Button onClick={count => setCount(count + 1)}> + 1 </Button>
+    	{ count }
+      <Button onClick={count => setCount(count - 1)}> - 1 </Button>
+    </Fragment>
+  )
+}
+
+export default UseHooks_State
+```
+
+- useReducer `useState的对象版本`
+
+```jsx
+import { Fragment, useState, useEffect } from 'react'
+import { Button } from 'antd'
+
+function reducer (state, action) { // 是不是很眼熟Redux
+  switch (action.type) {
+    case 'up':
+      return { count: state.count + 1 }
+    case 'down':
+      return { count: state.count - 1 }
+  }
+}
+
+const UseHooks_Reducer = () => {
+  const [state, dispatch] = useReducer(reducer, { count: 1 }) // 使用useReducer
+  
+  return (
+    <Fragment>
+    	<Button onClick={() => {dispatch({ type: 'up' })}}> + 1 </Button>
+      { state.count }
+			<Button onClick={() => {dispatch({ type: 'down' })}}> - 1 </Button>
+    </Fragment>
+  )
+}
+
+export default UseHooks_Reducer
+```
+
+- useEffect !!!!!!!
+
+> useEffect 是用于处理各种状态变化造成的副作用, 也就是说在特定的时刻, 才会执行相应的逻辑
+
+在编写组件的时候, 我们会使用生命周期函数来处理副作用操作, 比如ajax获取数据
+
+有了 useEffect, 什么都不怕了
+
+```jsx
+import { useState, useEffect } from 'react'
+import { Button } from 'antd'
+
+const UseHooks_Effect = () => {
+  const [count, setCount] = useState(0)
+  
+  useEffect(() => {
+    document.title = `You have Clicked ${count} times}`
+  }, [count]) // useEffect默认在每一次重新渲染的时候都会执行, 第二个参数可以控制(当第二个参数变化时执行)
+  
+  return (
+  	<Fragment>
+    	<Button onClick={() => {dispatch({ type: 'up' })}}> + 1 </Button>
+      { count }
+			<Button onClick={() => {dispatch({ type: 'down' })}}> - 1 </Button>
+    </Fragment>
+  )
+}
+```
+
+### 使用Hooks写自定义的hooks——真香
+
+```jsx
+// 判断用户在线
+
+import { useState, useEffect } from 'react'
+
+function useFriendStatus(friendID) {
+  const [isOnline, setIsOnline] = useState(null)
+  
+  function handleStatusChange(status) {
+    setIsOnline(status.isOnline)
+  }
+  
+  useEffect(() => {
+    ChatAPI.subscribeToFriendStatus(friendID, handleStatusChange)
+    return () => {
+      ChatAPI.unsubscribeFromFriendStatus(friendID, handleStatusChange)
+    }
+  })
+  
+  return isOnline
+}
+```
 
 
 

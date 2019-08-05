@@ -1,7 +1,9 @@
 node_modules/
 Code技能/node_modules
 Code技能/React/.pnp
+Code技能/React/dist
 Code技能/Vue/.pnp
+Code技能/Vue/dist
 Code技能/Node/.pnp
 Code技能/Babel/.pnp
 .vscode

@@ -1,7 +1,8 @@
 const path = require('path'),
     webpack = require('webpack'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
-    PnpWebpackPlugin = require('pnp-webpack-plugin')
+    PnpWebpackPlugin = require('pnp-webpack-plugin'),
+    MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const config = {
     mode: 'development',
@@ -19,14 +20,14 @@ const config = {
             {
                 test: /\.styl$/,
                 use: [
-                    'style-loader',
+                    MiniCssExtractPlugin.loader,
                     'css-loader',
                     'stylus-loader'
                 ]
             },
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader']
+                use: [MiniCssExtractPlugin.loader, 'css-loader']
 
             },
             {
@@ -47,6 +48,11 @@ const config = {
             }
         ],
     },
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
+    },
     resolve: {
         extensions: ['.js', '.ts', '.json', '.jsx', '.css'],
         plugins: [PnpWebpackPlugin]
@@ -61,6 +67,10 @@ const config = {
             template: './index.html',
             title: 'hello Jeden',
             filename: 'index.html'
+        }),
+        new MiniCssExtractPlugin({
+            filename: "[name].css",
+            chunkFilename: "[id].css"
         }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),

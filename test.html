@@ -12,32 +12,33 @@
 <body>
     <input type="text" onchange="dataChanged()">
     <script>
-        // function test(arr) {
-        //     let result = []
-        //     for (let i = 0; i < arr.length; i++) {
-        //         console.log(Array.isArray(arr[i]))
-        //         if (Array.isArray(arr[i])) {
-        //             result = result.concat(test(arr[i]))
-        //         } else {
-        //             result.push(arr[i])
-        //         }
-        //     }
-        //     return result
-        // }
-        // console.log(test([1, 2, 3, [1, 2, 3]]))
-        let options = {
-            data: {
-                value: "jeden"
-            }
-        }
-        let $data = options.data
-        Object.keys($data).forEach(item => Object.defineProperty($data, item, {
-            enumerable: true,
-            configurable: false,
-            get: () => {
-                return 
-            }
-        }))
+        let pro1 = new Promise((reslove, reject) => {
+            let a = 1
+            let b = 2
+            reslove(a)
+            reject(b)
+        })
+        let pro2 = new Promise((reslove, reject) => {
+            let a = 3
+            let b = 4
+            reslove(a)
+            reject(b)
+        })
+        let pro3 = new Promise((reslove, reject) => {
+            let a = 5
+            let b = 6
+            reslove(a)
+            reject(b)
+        })
+        
+
+        let all = Promise.all([pro1, pro2, pro3])
+
+        all.then(v => {
+            console.log(v)
+        }, e => {
+            console.log(e)
+        })
     </script>
 </body>
 

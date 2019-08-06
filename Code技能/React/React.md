@@ -219,6 +219,8 @@ class App extends Component {
 1. 和vue-router不一样, vue-router是配置路由, react-router更像管理组件, 把需要路由的组件导入到一个文件, 内部有路由的显示逻辑, 所以不需要类似router-view标签
 
 
+
+
 # React 新技术
 
 ## Fiber

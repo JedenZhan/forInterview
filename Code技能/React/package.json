@@ -1,10 +1,10 @@
 {
-  "name": "React",
+  "name": "reactpro",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "",
     "build": "webpack",
     "dev": "webpack-dev-server"
   },
@@ -47,5 +47,13 @@
   },
   "installConfig": {
     "pnp": true
+  },
+  "jest": {
+    "test": "/test/.*.test.js?$"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn test"
+    }
   }
 }

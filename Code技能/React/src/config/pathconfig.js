@@ -1,0 +1,3 @@
+const paths = {
+  hooks: '/hooks'
+}

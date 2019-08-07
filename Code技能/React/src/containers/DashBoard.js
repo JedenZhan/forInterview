@@ -1,5 +1,6 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Layout, Icon } from 'antd'
+import { Route } from 'react-router-dom'
 
 import AppMenu from '../components/menu'
 
@@ -24,7 +25,9 @@ const DashBoard = () => {
             background: "#fff",
             minHeight: 280
           }}
-        />
+        >
+        <Route path='/' exact component={} />
+        </Content>
       </Layout>
     </Layout>
   )

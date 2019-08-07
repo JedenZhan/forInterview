@@ -1,3 +1,5 @@
+
+
 # 自己动手搭建 react 项目
 
 ## 先安装基础包
@@ -63,17 +65,72 @@ React生命周期分为三个步骤: **创建挂载, 运行更新, 销毁**
 每一个步骤对应will和did钩子函数
 
 - 挂载 ---- 一辈子只执行一次
-  - componentWillMount()
+  - componentWillMount()    **16弃用**
   - render()
   - componentDidMount()
 - 更新 ---- 按需执行多次
-  - componentWillReceiveProps()
+  - componentWillReceiveProps()    **16弃用**
   - shouldComponentUpdate()
-  - componentWillUpdate()
+  - componentWillUpdate()    **16弃用**
   - render()
   - componentDidUpdate()
 - 销毁 ---- 只执行一次
   - componentWillUnmount()
+
+
+
+## 增加Fiber后的生命周期函数
+
+```jsx
+import React { Component } from 'react'
+
+export default class NewReactComponent extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      
+    }
+  }
+  static getDerivedStateFromProps(props, state) { // 组件每一次rerender的时候包括在组件构建之后,(虚拟dom之后,每次获取新的props或者state之后,每一次接收到新的props之后都会返回一个对象作为新的state,返回null则说明不需要更新state)
+    return state
+  }
+  componentDidCatch(error, info) { // 组件错误时调用
+    
+  }
+  render () {
+    return <h2>Hello</h2>
+  }
+  componentDidMount() {
+    
+  }
+  getSnapshotBeforeUpdate() { // update发生的时候,在render之后,每一次dom渲染之前,返回一个值,作为componentDidUpdate的第三个参数
+    
+  }
+  shouldComponentUpdate(prevProps, prevState) { // 组件每一次接收到新的props或者state调用,  return true则更新dom, return false则阻止更新
+    
+  }
+  componentDidUpdate() { // 组件加载时不会调用,组件更新后调用
+    
+  }
+  componentWillUnMount() {
+    
+  }
+}
+```
+
+
+
+
+
+
+
+
+
+![img](./assets/newLifeCircle.jpeg)
+
+
+
+
 
 ## 唯一数据源
 
@@ -224,6 +281,12 @@ class App extends Component {
 # React 新技术
 
 ## Fiber
+
+> 刚开始React在进行组件渲染时, 从setState到渲染完成`一气呵成` 但是这样的问题就是如果渲染组件比较庞大, js执行占用主线程时间过长,会导致页面响应度变差,使得React在交互优先级比较高的效果很差
+
+基本核心原理: `浏览器提供requestIdleCallback()` 用以提供两帧之间空闲时间执行回调函数
+
+
 
 
 

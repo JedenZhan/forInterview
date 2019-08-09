@@ -2,44 +2,43 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <!-- <script src="./test.js"></script> -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- <script src="./test.js"></script> -->
 </head>
 
 <body>
-    <input type="text" onchange="dataChanged()">
-    <script>
-        let pro1 = new Promise((reslove, reject) => {
-            let a = 1
-            let b = 2
-            reslove(a)
-            reject(b)
-        })
-        let pro2 = new Promise((reslove, reject) => {
-            let a = 3
-            let b = 4
-            reslove(a)
-            reject(b)
-        })
-        let pro3 = new Promise((reslove, reject) => {
-            let a = 5
-            let b = 6
-            reslove(a)
-            reject(b)
-        })
-        
+  <script>
+    let obj = {
+      name: 'jeden'
+    }
 
-        let all = Promise.all([pro1, pro2, pro3])
+    const observe = data => {
+      if (!data || typeof data !== 'object') return
+      Reflect.ownKeys(data).forEach(key => {
+        defineReactive(data, key, data[key])
+      })
+    }
 
-        all.then(v => {
-            console.log(v)
-        }, e => {
-            console.log(e)
-        })
-    </script>
+    const defineReactive = (data, key, val) => {
+      observe(val)
+      Reflect.defineProperty(data, key, {
+        enumerable: true,
+        configurable: false,
+        get: () => val,
+        set: newVal => {
+          console.log(val, 'to', newVal)
+          val = newVal
+        }
+      })
+    }
+
+    observe(obj)
+
+    obj.name = 'zhan'
+  </script>
 </body>
 
 </html>

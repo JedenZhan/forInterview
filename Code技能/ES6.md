@@ -8,15 +8,16 @@
 4. 函数扩展
 5. 对象扩展
 6. 箭头函数
-7. Class语法糖
-8. Promise解决异步调用
-9. 解构赋值
-10. Symbol
-11. Set和Map新数据类型
-12. 模块化
-13. async 异步
-14. Proxy 代理
-15. Generator
+7. 尾递归优化
+8. Class语法糖
+9. Promise解决异步调用
+10. 解构赋值
+11. Symbol
+12. Set和Map新数据类型
+13. 模块化
+14. async 异步
+15. Proxy 代理
+16. Generator
 
 ## 数组扩展
 ### 展开运算符

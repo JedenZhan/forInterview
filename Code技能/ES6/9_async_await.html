@@ -8,7 +8,32 @@
 </head>
 <body>
     <script>
-        
+        function fetchUser() {
+            return new Promise((reslove, reject) => {
+                fetch('https://api.github.com/users/superman66')
+                .then(data => {
+                    reslove(data.json())
+                }, err => {
+                    reject(err)
+                })
+            })
+        }
+        // 直接调用使用promise,但是很可能充满then
+        fetchUser().then(v => {
+            // console.log(v)
+        })
+
+        // async 方式
+        async function f() {
+            let user = await fetchUser()
+            return user
+        }
+
+        console.log(f())
+
+        f().then(v => {
+            console.log(v)
+        })
     </script>
 </body>
 </html>

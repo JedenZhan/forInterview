@@ -4,6 +4,17 @@
 
 1. call, apply, bind了解过吗, 实现一下bind
 2. 说一下requestAnimationFrame
+3. 继承的实现
+4. 
+
+### CSS
+
+1. flex
+2. bfc
+3. ifc
+4. 垂直居中布局
+
+
 
 ### 学习一个框架
 
@@ -26,6 +37,8 @@
 ## 浏览器
 
 1. 浏览器cookie和session的认识
+2. fetch
+3. 
 
 ## 安全
 
@@ -41,7 +54,7 @@
 1. 讲一下跨域? 有哪几种方式
 2. 讲一下三次握手和四次挥手
 3. http有哪些请求方法
-4. 
+4. 跨域携带cookie
 
 ## 设计模式
 

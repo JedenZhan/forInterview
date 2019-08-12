@@ -1,44 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-  <!-- <script src="./test.js"></script> -->
 </head>
-
 <body>
   <script>
-    let obj = {
-      name: 'jeden'
+    function jsonp(url, jsonpCallback, success) {
+      let script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.type = 'text/javascript'
+      window[jsonpCallback] = function(data) {
+        success && success(data)
+      }
+      document.body.appendChild(script)
     }
+    // jsonp('https://suggest.taobao.com/sug', 'callback', function(value) {
+    //   console.log(value)
+    // })
 
-    const observe = data => {
-      if (!data || typeof data !== 'object') return
-      Reflect.ownKeys(data).forEach(key => {
-        defineReactive(data, key, data[key])
-      })
-    }
+    fetch('https://api.github.com/users/jedenzhan').then(value => {
+      return value.json()
+    }).then(v => {
+      console.log(v)
+    })
 
-    const defineReactive = (data, key, val) => {
-      observe(val)
-      Reflect.defineProperty(data, key, {
-        enumerable: true,
-        configurable: false,
-        get: () => val,
-        set: newVal => {
-          console.log(val, 'to', newVal)
-          val = newVal
-        }
-      })
-    }
-
-    observe(obj)
-
-    obj.name = 'zhan'
   </script>
 </body>
-
 </html>

@@ -1398,6 +1398,27 @@ let packageInformationStores = new Map([
       ]),
     }],
   ])],
+  ["mobx-react", new Map([
+    ["6.1.2", {
+      packageLocation: path.resolve(__dirname, "../../../../Library/Caches/Yarn/v4/npm-mobx-react-6.1.2-ed705566edca4baf1c6d87c3eff3dcd17ba09573/node_modules/mobx-react/"),
+      packageDependencies: new Map([
+        ["mobx", "5.13.0"],
+        ["react", "16.8.6"],
+        ["mobx-react-lite", "1.4.0"],
+        ["mobx-react", "6.1.2"],
+      ]),
+    }],
+  ])],
+  ["mobx-react-lite", new Map([
+    ["1.4.0", {
+      packageLocation: path.resolve(__dirname, "../../../../Library/Caches/Yarn/v4/npm-mobx-react-lite-1.4.0-193beb5fdddf17ae61542f65ff951d84db402351/node_modules/mobx-react-lite/"),
+      packageDependencies: new Map([
+        ["mobx", "5.13.0"],
+        ["react", "16.8.6"],
+        ["mobx-react-lite", "1.4.0"],
+      ]),
+    }],
+  ])],
   ["pnp-webpack-plugin", new Map([
     ["1.5.0", {
       packageLocation: path.resolve(__dirname, "../../../../Library/Caches/Yarn/v4/npm-pnp-webpack-plugin-1.5.0-62a1cd3068f46d564bb33c56eb250e4d586676eb/node_modules/pnp-webpack-plugin/"),
@@ -8731,11 +8752,20 @@ let packageInformationStores = new Map([
       ]),
     }],
   ])],
+  ["mobx", new Map([
+    ["5.13.0", {
+      packageLocation: path.resolve(__dirname, "../../../../Library/Caches/Yarn/v4/npm-mobx-5.13.0-0fd68f10aa5ff2d146a4ed9e145b53337cfbca59/node_modules/mobx/"),
+      packageDependencies: new Map([
+        ["mobx", "5.13.0"],
+      ]),
+    }],
+  ])],
   [null, new Map([
     [null, {
       packageLocation: path.resolve(__dirname, "./"),
       packageDependencies: new Map([
         ["antd", "3.20.7"],
+        ["mobx-react", "6.1.2"],
         ["pnp-webpack-plugin", "1.5.0"],
         ["prop-types", "15.7.2"],
         ["react", "16.8.6"],
@@ -8764,6 +8794,7 @@ let packageInformationStores = new Map([
         ["webpack", "4.39.1"],
         ["webpack-cli", "3.3.6"],
         ["webpack-dev-server", "3.7.2"],
+        ["mobx", "5.13.0"],
       ]),
     }],
   ])],
@@ -8909,6 +8940,8 @@ let locatorsByLocations = new Map([
   ["../../../../Library/Caches/Yarn/v4/npm-react-slick-0.24.0-1a4e078a82de4e9458255d9ce26aa6f3b17b168b/node_modules/react-slick/", {"name":"react-slick","reference":"0.24.0"}],
   ["../../../../Library/Caches/Yarn/v4/npm-json2mq-0.2.0-b637bd3ba9eabe122c83e9720483aeb10d2c904a/node_modules/json2mq/", {"name":"json2mq","reference":"0.2.0"}],
   ["../../../../Library/Caches/Yarn/v4/npm-string-convert-0.2.1-6982cc3049fbb4cd85f8b24568b9d9bf39eeff97/node_modules/string-convert/", {"name":"string-convert","reference":"0.2.1"}],
+  ["../../../../Library/Caches/Yarn/v4/npm-mobx-react-6.1.2-ed705566edca4baf1c6d87c3eff3dcd17ba09573/node_modules/mobx-react/", {"name":"mobx-react","reference":"6.1.2"}],
+  ["../../../../Library/Caches/Yarn/v4/npm-mobx-react-lite-1.4.0-193beb5fdddf17ae61542f65ff951d84db402351/node_modules/mobx-react-lite/", {"name":"mobx-react-lite","reference":"1.4.0"}],
   ["../../../../Library/Caches/Yarn/v4/npm-pnp-webpack-plugin-1.5.0-62a1cd3068f46d564bb33c56eb250e4d586676eb/node_modules/pnp-webpack-plugin/", {"name":"pnp-webpack-plugin","reference":"1.5.0"}],
   ["../../../../Library/Caches/Yarn/v4/npm-ts-pnp-1.1.2-be8e4bfce5d00f0f58e0666a82260c34a57af552/node_modules/ts-pnp/", {"name":"ts-pnp","reference":"1.1.2"}],
   ["../../../../Library/Caches/Yarn/v4/npm-react-16.8.6-ad6c3a9614fd3a4e9ef51117f54d888da01f2bbe/node_modules/react/", {"name":"react","reference":"16.8.6"}],
@@ -9662,6 +9695,7 @@ let locatorsByLocations = new Map([
   ["../../../../Library/Caches/Yarn/v4/npm-webpack-dev-middleware-3.7.0-ef751d25f4e9a5c8a35da600c5fda3582b5c6cff/node_modules/webpack-dev-middleware/", {"name":"webpack-dev-middleware","reference":"3.7.0"}],
   ["../../../../Library/Caches/Yarn/v4/npm-webpack-log-2.0.0-5b7928e0637593f119d32f6227c1e0ac31e1b47f/node_modules/webpack-log/", {"name":"webpack-log","reference":"2.0.0"}],
   ["../../../../Library/Caches/Yarn/v4/npm-ansi-colors-3.2.4-e3a3da4bfbae6c86a9c285625de124a234026fbf/node_modules/ansi-colors/", {"name":"ansi-colors","reference":"3.2.4"}],
+  ["../../../../Library/Caches/Yarn/v4/npm-mobx-5.13.0-0fd68f10aa5ff2d146a4ed9e145b53337cfbca59/node_modules/mobx/", {"name":"mobx","reference":"5.13.0"}],
   ["./", topLevelLocator],
 ]);
 exports.findPackageLocator = function findPackageLocator(location) {

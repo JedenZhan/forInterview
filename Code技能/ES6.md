@@ -16,7 +16,7 @@
 12. Set和Map新数据类型
 13. 模块化
 14. async 异步
-15. Proxy 代理
+15. Proxy 代理w
 16. Generator
 
 ## 数组扩展

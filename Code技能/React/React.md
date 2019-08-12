@@ -245,11 +245,48 @@ class App extends Component {
 
 ### 使用 react-redux 连接 redux
 
-```js
+子组件注入props
 
+```js
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
+class Noname extends Component {
+  //....
+}
+
+const mapStateToProps = state => {
+  return {
+    //...
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    //...
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Noname)
 ```
 
+在根组件注入应用
 
+```jsx
+//...
+import { Provider } from 'react-redux'
+import store from './redux/store'
+
+class App extends Component {
+  render () {
+    return (
+    	<Provider store={store}>
+      	<App />
+      </Provider>
+    )
+  }
+}
+```
 
 ### redux-thunk 构建异步 action
 
@@ -259,7 +296,11 @@ class App extends Component {
 
 ## Mobx
 
-相对Redux来说
+相对Redux来说:
+
+- 学习成本低, 相对redux比较简单
+- mobx推荐面向对象编程, 而redux推荐函数式编程
+- 模板代码少, 所以自由度高, 团队需要制定相关规范
 
 
 

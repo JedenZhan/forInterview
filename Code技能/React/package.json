@@ -35,6 +35,8 @@
   },
   "dependencies": {
     "antd": "^3.16.3",
+    "mobx": "^5.13.0",
+    "mobx-react": "^6.1.2",
     "pnp-webpack-plugin": "^1.5.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",

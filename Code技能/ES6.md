@@ -4,19 +4,59 @@
 
 1. 变量声明let, const
 2. 字符串扩展
+   1. 模板字符串
 3. 数组扩展
-4. 函数扩展
-5. 对象扩展
-6. 箭头函数
-7. 尾递归优化
+   1. Array.isArray()
+   2. Array.from
+   3. Array.of
+   4. Array.prototype.find
+4. 数字扩展
+   1. Number.isFinite()
+   2. Number.isNaN()
+   3. 将parseInt和parseFloat已到Number上面, 减少全局函数
+   4. Number.isTnteger()判断是否为整数
+   5. 扩展运算符
+5. 函数扩展
+   1. 默认值
+   2. ...rest
+   3. 箭头函数
+   4. 尾调用优化
+6. 对象扩展
+   1. 属性简洁表示
+   2. super关键字
+   3. 对象扩展运算符
+7. 箭头函数
+   1. 没有this
+   2. 不能new
+   3. 可以call, apply, bind, 但this不会改变
 8. Class语法糖
+   1. 
 9. Promise解决异步调用
+   1. Promise
+      1. .all
+      2. .race
+      3. .resolve
+      4. .reject
+      5. .allSettled
+   2. Promise.prototype
+      1. .then
+      2. .catch
+      3. .finally
 10. 解构赋值
+    1. 左右结构相同即可
 11. Symbol
+    1. 唯一标识符, 主要用于解决对象键名重复问题
 12. Set和Map新数据类型
+    1. set
+       1. 成员唯一无重复
+       2. add()添加新成员
+       3. set内部使用===判断是否相等, 并且NaN === NaN
+    2. 
+    3. map
+       1. 
 13. 模块化
 14. async 异步
-15. Proxy 代理w
+15. Proxy 代理
 16. Generator
 
 ## 数组扩展

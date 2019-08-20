@@ -136,7 +136,7 @@ export default class NewReactComponent extends Component {
 
 数据源的话,有props和state, 如果把props保存到state, 就不是唯一数据源, 虽然props更新了, 但是组件本身state没有更新
 
-这样的组件叫做受控组件
+没有本身state的组件叫做受控组件, 否则叫做非受控组件
 
 ## Redux
 

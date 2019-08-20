@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,11 @@
   <title>Document</title>
   <script>
     // 常用工具函数
-
+    // 打印
     function print(e) {
       console.log(e)
     }
-
+    // ajax
     function myAjax(options) {
       const getParams = (obj) => { // 格式化参数方法
         if (!obj) return null
@@ -22,9 +23,17 @@
         return arr.join('&')
       }
 
-      let { url, data, method='get', async=true, timeout=1000, success, error } = options
+      let {
+        url,
+        data,
+        method = 'get',
+        async = true,
+        timeout = 1000,
+        success,
+        error
+      } = options
       let params = getParams(data)
-      let xhr = new (XMLHttpRequest ? XMLHttpRequest : ActiveXObject)()
+      let xhr = new(XMLHttpRequest ? XMLHttpRequest : ActiveXObject)()
 
       if (method.toUpperCase() === 'GET') url = url + params // get拼接参数
 
@@ -43,23 +52,12 @@
       }
     }
 
+    // 获取元素
     function $(e) {
       return document.getElementById(e)
     }
-  </script>
-</head>
-<body>
-  <script>
-    let obj = {
-      name: 'jeden',
-      age: 18,
-      family: {
-        name: 1,
-        parent: {
-          name: 'lala'
-        }
-      }
-    }
+
+    // 深拷贝
     function deepClone(obj) {
       let result = {}
       Reflect.ownKeys(obj).map(item => {
@@ -67,10 +65,13 @@
       })
       return result
     }
+  </script>
+</head>
 
-    let clo1 = deepClone(obj)
-
-    print(clo1)
+<body>
+  <script>
+    
   </script>
 </body>
+
 </html>

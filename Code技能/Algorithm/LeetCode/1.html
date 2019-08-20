@@ -184,7 +184,22 @@
             }
             return str[n - 1];
         };
-        print(findNthDigit(10000000))
+        // print(findNthDigit(10000000))
+
+        // 两数之和
+        var twoSum = function (nums, target) {
+            if (!nums) return
+            for (let i = 0, len = nums.length; i < len; i++) {
+                let needValue = target - nums[i]
+                let needIndex = nums.lastIndexOf(needValue)
+                console.log(needIndex, needValue)
+                if (needIndex != -1 && needIndex != i) {
+                    return [i, needIndex]
+                }
+            }
+        };
+
+        print(twoSum([0, 4, 3, 0], 0))
     </script>
 </body>
 

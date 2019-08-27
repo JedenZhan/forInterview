@@ -1,77 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-  <script>
-    // 常用工具函数
-    // 打印
-    function print(e) {
-      console.log(e)
+  <style>
+    #wrapper {
+      height: 300px;
+      background-color: #ccc;
     }
-    // ajax
-    function myAjax(options) {
-      const getParams = (obj) => { // 格式化参数方法
-        if (!obj) return null
-        let arr = []
-        for (let key in obj) {
-          arr.push(`${key}=${obj[k]}`)
-        }
-        return arr.join('&')
-      }
-
-      let {
-        url,
-        data,
-        method = 'get',
-        async = true,
-        timeout = 1000,
-        success,
-        error
-      } = options
-      let params = getParams(data)
-      let xhr = new(XMLHttpRequest ? XMLHttpRequest : ActiveXObject)()
-
-      if (method.toUpperCase() === 'GET') url = url + params // get拼接参数
-
-      xhr.open(method, url, async)
-      xhr.send(params)
-
-      xhr.onreadystatechange = () => {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-          let contentType = xhr.getResponseHeader('content-type')
-          let data = JSON.parse(xhr.responseText)
-          success && success(data)
-        } else if (xhr.readyState === 4 && xhr.status !== 200) {
-          let e = xhr.responseText
-          error && error(e)
-        }
-      }
-    }
-
-    // 获取元素
-    function $(e) {
-      return document.getElementById(e)
-    }
-
-    // 深拷贝
-    function deepClone(obj) {
-      let result = {}
-      Reflect.ownKeys(obj).map(item => {
-        result[item] = typeof obj[item] === 'object' ? deepClone(obj[item]) : obj[item]
-      })
-      return result
-    }
-  </script>
+  </style>
 </head>
-
 <body>
+  <div id="wrapper"></div>
   <script>
-    
+    let wrapper = document.getElementById('wrapper')
+    let i = 0
+
+    wrapper.addEventListener('mousemove', dobounce(function (a, b) {
+        console.log(i++, this)
+      }, 500)
+    )
+
+    function dobounce(func, time) {
+      let timer = null
+      return function (...rest) {
+        let _this = this
+        clearTimeout(timer)
+        timer = setTimeout(() => {
+          func.apply(_this, rest)
+        }, time);
+      }
+    }
+  
+  
   </script>
 </body>
-
 </html>

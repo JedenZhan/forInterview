@@ -17,6 +17,12 @@ const config = {
         path: path.reslove(__dirname, 'dist')
     },
     module: {
+			rules: [
+        {
+          test: /\.js$/,
+          use: 'babel-loader'
+        }
+      ]
         
     },
     plugins: [

@@ -9,5 +9,4 @@ Code技能/Babel/.pnp
 .vscode
 *.log
 .idea​​
-test.js
-test.html
+test.*

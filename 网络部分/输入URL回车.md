@@ -59,10 +59,10 @@ local DNS server 会缓存这个域名和 IP 的对应关系, 缓存时间由 TT
 客户端发送到服务端的http请求消息包括以下格式
 **请求头,请求行,空行和请求数据**
 
-![img](/Users/jedenzhan/Documents/forInterview/%E7%BD%91%E7%BB%9C%E9%83%A8%E5%88%86/imgs/http%20post%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87.png)
+![img](./imgs/http%20post%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87.png)
 server 响应:
 
-![img](/Users/jedenzhan/Documents/forInterview/%E7%BD%91%E7%BB%9C%E9%83%A8%E5%88%86/imgs/http%20%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87.png)
+![img](./imgs/http%20%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87.png)
 
 ## 
 
